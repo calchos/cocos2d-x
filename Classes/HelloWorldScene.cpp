@@ -35,6 +35,15 @@ bool HelloWorld::init()
     
     Director::getInstance()->setDisplayStats(false); // stats OFF*
     
+    
+    // タップイベントを取得する
+    auto listener = EventListenerTouchOneByOne::create();// シングルタッチ
+    listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);//タッチしたときに1回だけ処理を実行
+    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);// イベントリスナーの組み込み
+    
+    
+    
+    
     // チョコさん
     _character1 = BaseChara::create("res/chocoto.png");// スプライト画像読み込み
     _character1->setAnchorPoint(Vec2(1.0,1.0));// アンカーポイント指定
@@ -45,6 +54,7 @@ bool HelloWorld::init()
     _character1->_hp = 100;// HP
     _character1->_attackPoint = 10;// 攻撃力
     this->addChild(_character1,1);// 画面描画
+    
     
     Label* charaHp1 = Label::createWithTTF("HP", "fonts/ヒラギノ明朝 ProN W3.ttc" , 20);// HPフォント指定
     charaHp1->setColor(cocos2d::Color3B::BLACK);// フォントカラー指定
@@ -179,6 +189,66 @@ bool HelloWorld::init()
     return true;
 
 }
+
+
+// 画面をタッチした時の処理
+bool HelloWorld::onTouchBegan(Touch* pTouch, Event* pEvent){
+    
+    Vec2 touchPoint = convertTouchToNodeSpace(pTouch);// タッチした画面の座標(X,Y)を取得
+    if(touchPoint.x < 0 || touchPoint.x > 600){// 画面外をタッチすると無効
+        log("タッチ無効範囲です");
+    } else {
+        
+        auto visibleSize = Director::getInstance()->getVisibleSize();
+        Point origin = Director::getInstance()->getVisibleOrigin();
+        
+        Director::getInstance()->setDisplayStats(false); // stats OFF*
+        
+        SpriteFrameCache::getInstance()->addSpriteFramesWithFile("res/sprites.plist");
+        
+        auto sprite1 = Sprite::createWithSpriteFrameName("chocoto_attack_01.png");
+        sprite1->setAnchorPoint(Vec2(1.0,1.0));// アンカーポイント指定
+        sprite1->setPosition(Vec2(origin.x + 550, origin.y + visibleSize.height / 2 - 80));// 位置指定
+        this->addChild(sprite1,1);
+        
+        
+        // アニメーションに画像を追加
+        /*
+        Animation* animation = Animation::create();
+        
+        SpriteFrame* sprite0 = SpriteFrameCache::getInstance()->getSpriteFrameByName("res/chocoto_attack_01.png");
+        animation->addSpriteFrame(sprite0);
+        SpriteFrame* sprite1 = SpriteFrameCache::getInstance()->getSpriteFrameByName("res/chocoto_attack_02.png");
+        animation->addSpriteFrame(sprite1);
+        
+        // アニメーションの間隔
+        animation->setDelayPerUnit(0.5);
+        
+        // アニメーション終了後に最初に戻すかどうか
+        animation->setRestoreOriginalFrame(true);
+        
+        // アクションの設定
+        FiniteTimeAction* repeat = RepeatForever::create(Animate::create(animation));
+        
+        // アクションの実行
+        sprite->runAction(repeat);
+        
+        animation->addSpriteFrame(sprite0);
+        */
+        
+        // 敵HP減算
+        _enemy1->_hp -= _character1->_attackPoint;
+        
+        // 敵HP表示更新
+        _enemy1->_hpLabel = _enemy1->createHpLabel();
+        this->addChild(_enemy1->_hpLabel);
+        
+        
+    }
+
+    return true;
+}
+
 
 // バトル更新処理
 void HelloWorld::update(float delta){

@@ -24,6 +24,10 @@ public:
     
     void update(float delta);// 更新処理定義
     
+    // タッチ処理
+    virtual bool onTouchBegan(cocos2d::Touch* pTouch, cocos2d::Event* pEvent);// タッチしたときに1回だけ実行する処理
+    
+    
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
     
