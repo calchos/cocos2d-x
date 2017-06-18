@@ -1,23 +1,26 @@
-#include "AppDelegate.h"
-#include "HelloWorldScene.h"
+#include "AppDelegate.h" // AppDelegate.h インクルード
+#include "SplashScene.h" // BattleScene.h インクルード
 
-USING_NS_CC;
+USING_NS_CC; // #define USING_NS_CC using namespace cocos2d
 
-static cocos2d::Size designResolutionSize = cocos2d::Size(480, 320);
+static cocos2d::Size designResolutionSize = cocos2d::Size(480, 320); //
 static cocos2d::Size smallResolutionSize = cocos2d::Size(480, 320);
 static cocos2d::Size mediumResolutionSize = cocos2d::Size(1024, 768);
 static cocos2d::Size largeResolutionSize = cocos2d::Size(2048, 1536);
 
+// デストラクタ実体関数
 AppDelegate::AppDelegate()
 {
 }
 
+// デストラクタ仮想関数
 AppDelegate::~AppDelegate() 
 {
 }
 
 // if you want a different context, modify the value of glContextAttrs
 // it will affect all platforms
+// OpenGL設定
 void AppDelegate::initGLContextAttrs()
 {
     // set OpenGL context attributes: red,green,blue,alpha,depth,stencil
@@ -28,22 +31,28 @@ void AppDelegate::initGLContextAttrs()
 
 // if you want to use the package manager to install more packages,  
 // don't modify or remove this function
+// パッケージ登録処理
 static int register_all_packages()
 {
     return 0; //flag for packages manager
 }
 
+// アプリ起動時の処理
 bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
     auto director = Director::getInstance();
+    // OpenGL処理呼び出し
     auto glview = director->getOpenGLView();
+    // 処理が呼べない場合
     if(!glview) {
+        // ターゲットプラットフォームチェック
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
+        // ウィンドゥサイズの設定
         glview = GLViewImpl::createWithRect("test", cocos2d::Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
 #else
-        glview = GLViewImpl::create("test");
+        glview = GLViewImpl::create("test");// createメソッドで
 #endif
-        director->setOpenGLView(glview);
+        director->setOpenGLView(glview);// glviewセット
     }
 
     // turn on display FPS
@@ -72,13 +81,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
         director->setContentScaleFactor(MIN(smallResolutionSize.height/designResolutionSize.height, smallResolutionSize.width/designResolutionSize.width));
     }
     */
-    // 画面解像度600×600でFIX                                                 
+    // 画面解像度を600×600で固定
     glview->setDesignResolutionSize(600.0, 600.0, ResolutionPolicy::SHOW_ALL);
 
+    // register_all_packages()呼び出し
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+    auto scene = SplashScene::createScene();
 
     // run
     director->runWithScene(scene);

@@ -1,26 +1,26 @@
 #pragma execution_character_set("utf-8") // 文字コード指定
-#include "HelloWorldScene.h" // HelloWorldScene.h読み込み
+#include "BattleScene.h" // HelloWorldScene.h読み込み
 #include "SimpleAudioEngine.h"// SimpleAudioEngine.h読み込み
 
 USING_NS_CC; // #define USING_NS_CC using namespace cocos2d
 
-Scene* HelloWorld::createScene() //
+Scene* Stage::createScene() //
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
     
     // 'layer' is an autorelease object
-    auto layer = HelloWorld::create();
-
+    auto layer = Stage::create();
+    
     // add layer as a child to scene
     scene->addChild(layer);
-
+    
     // return the scene
     return scene;
 }
 
 // on "init" you need to initialize your instance
-bool HelloWorld::init()
+bool Stage::init()
 {
     //////////////////////////////
     // 1. super init first
@@ -38,7 +38,7 @@ bool HelloWorld::init()
     
     // タップイベントを取得する
     auto listener = EventListenerTouchOneByOne::create();// シングルタッチ
-    listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);//タッチしたときに1回だけ処理を実行
+    listener->onTouchBegan = CC_CALLBACK_2(Stage::onTouchBegan, this);//タッチしたときに1回だけ処理を実行
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);// イベントリスナーの組み込み
     
     
@@ -65,7 +65,7 @@ bool HelloWorld::init()
     _character1->_hpLabelPosY = 140;// HP数値Y座標指定
     _character1->_hpLabel = _character1->createHpLabel();// HPラベル生成
     this->addChild(_character1->_hpLabel, 1, 0);// HP数値描画
-
+    
     // 真紅さん
     _character2 = BaseChara::create("res/sinku.png");
     _character2->setAnchorPoint(Vec2(1.0,1.0));
@@ -75,7 +75,7 @@ bool HelloWorld::init()
     _character2->_hp = 100;
     _character2->_attackPoint = 10;
     this->addChild(_character2,1);
-
+    
     Label* charaHp2 = Label::createWithTTF("HP", "fonts/ヒラギノ明朝 ProN W3.ttc" , 20);
     charaHp2->setColor(cocos2d::Color3B::BLACK);
     charaHp2->setPosition(Vec2(525,50));
@@ -147,7 +147,7 @@ bool HelloWorld::init()
     _enemy1->_hpLabelPosY = 180;
     _enemy1->_hpLabel = _enemy1->createHpLabel();
     this->addChild(_enemy1->_hpLabel, 1, 0);
-
+    
     
     // エネミー2
     _enemy2 = BaseChara::create("res/Cactuar.png");
@@ -168,14 +168,14 @@ bool HelloWorld::init()
     _enemy2->_hpLabelPosY = 30;
     _enemy2->_hpLabel = _enemy2->createHpLabel();
     this->addChild(_enemy2->_hpLabel, 1, 0);
-
+    
     
     // オープニング背景
     /* チョコっとコメントアウト
-    auto background = Sprite::create("res/crystalTower.png");
-    background->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
-    this->addChild(background,0);
-    */
+     auto background = Sprite::create("res/crystalTower.png");
+     background->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+     this->addChild(background,0);
+     */
     
     // ステージ1背景表示
     auto background2 = Sprite::create("res/knowledge_plain.png");
@@ -184,15 +184,15 @@ bool HelloWorld::init()
     
     // 更新メソッド定期呼び出し
     this->scheduleUpdate();
-
+    
     
     return true;
-
+    
 }
 
 
 // 画面をタッチした時の処理
-bool HelloWorld::onTouchBegan(Touch* pTouch, Event* pEvent){
+bool Stage::onTouchBegan(Touch* pTouch, Event* pEvent){
     
     Vec2 touchPoint = convertTouchToNodeSpace(pTouch);// タッチした画面の座標(X,Y)を取得
     if(touchPoint.x < 0 || touchPoint.x > 600){// 画面外をタッチすると無効
@@ -221,44 +221,44 @@ bool HelloWorld::onTouchBegan(Touch* pTouch, Event* pEvent){
         
         // todo スプライトシートから画像読み込む(次期バージョンで実装)
         /*
-        auto visibleSize = Director::getInstance()->getVisibleSize();
-        Point origin = Director::getInstance()->getVisibleOrigin();
-        
-        Director::getInstance()->setDisplayStats(false); // stats OFF*
-        
-        
-        SpriteFrameCache::getInstance()->addSpriteFramesWithFile("res/sprites.plist");
-        
-        Sprite* sprite1 = Sprite::createWithSpriteFrameName("chocoto_attack_01.png");
-        sprite1->setAnchorPoint(Vec2(1.0,1.0));// アンカーポイント指定
-        sprite1->setPosition(Vec2(origin.x + 550, origin.y + visibleSize.height / 2 - 80));// 位置指定
-        this->addChild(sprite1,1);
-        */
+         auto visibleSize = Director::getInstance()->getVisibleSize();
+         Point origin = Director::getInstance()->getVisibleOrigin();
+         
+         Director::getInstance()->setDisplayStats(false); // stats OFF*
+         
+         
+         SpriteFrameCache::getInstance()->addSpriteFramesWithFile("res/sprites.plist");
+         
+         Sprite* sprite1 = Sprite::createWithSpriteFrameName("chocoto_attack_01.png");
+         sprite1->setAnchorPoint(Vec2(1.0,1.0));// アンカーポイント指定
+         sprite1->setPosition(Vec2(origin.x + 550, origin.y + visibleSize.height / 2 - 80));// 位置指定
+         this->addChild(sprite1,1);
+         */
         
         
         // todo 攻撃アニメーション実行(次期バージョンで実装)
         /*
-        Animation* animation = Animation::create();
-        
-        SpriteFrame* sprite0 = SpriteFrameCache::getInstance()->getSpriteFrameByName("res/chocoto_attack_01.png");
-        animation->addSpriteFrame(sprite0);
-        SpriteFrame* sprite1 = SpriteFrameCache::getInstance()->getSpriteFrameByName("res/chocoto_attack_02.png");
-        animation->addSpriteFrame(sprite1);
-        
-        // アニメーションの間隔
-        animation->setDelayPerUnit(0.5);
-        
-        // アニメーション終了後に最初に戻すかどうか
-        animation->setRestoreOriginalFrame(true);
-        
-        // アクションの設定
-        FiniteTimeAction* repeat = RepeatForever::create(Animate::create(animation));
-        
-        // アクションの実行
-        sprite->runAction(repeat);
-        
-        animation->addSpriteFrame(sprite0);
-        */
+         Animation* animation = Animation::create();
+         
+         SpriteFrame* sprite0 = SpriteFrameCache::getInstance()->getSpriteFrameByName("res/chocoto_attack_01.png");
+         animation->addSpriteFrame(sprite0);
+         SpriteFrame* sprite1 = SpriteFrameCache::getInstance()->getSpriteFrameByName("res/chocoto_attack_02.png");
+         animation->addSpriteFrame(sprite1);
+         
+         // アニメーションの間隔
+         animation->setDelayPerUnit(0.5);
+         
+         // アニメーション終了後に最初に戻すかどうか
+         animation->setRestoreOriginalFrame(true);
+         
+         // アクションの設定
+         FiniteTimeAction* repeat = RepeatForever::create(Animate::create(animation));
+         
+         // アクションの実行
+         sprite->runAction(repeat);
+         
+         animation->addSpriteFrame(sprite0);
+         */
         
         // 敵HP減算
         //_enemy1->_hp -= _character1->_attackPoint;
@@ -269,13 +269,13 @@ bool HelloWorld::onTouchBegan(Touch* pTouch, Event* pEvent){
         
         
     }
-
+    
     return true;
 }
 
 
 // バトル更新処理
-void HelloWorld::update(float delta){
+void Stage::update(float delta){
     
     // 味方のターン
     if(_state == TYPE_PLAYER_TURN){

@@ -1,12 +1,10 @@
-// 重複定義の回避 __HELLOWORLD_SCENE_H__は記号定数
-#ifndef __HELLOWORLD_SCENE_H__
-#define __HELLOWORLD_SCENE_H__
+#ifndef BattleScene_h
+#define BattleScene_h
 
 #include "cocos2d.h" // cocos2d.hインクルード
 #include "BaseChara.hpp"// BaseChara.hppインクルード
 
-
-class HelloWorld : public cocos2d::Layer // 派生クラス HelloWorld作成
+class Stage : public cocos2d::Layer // 派生クラス HelloWorld作成
 {
     
 public:
@@ -31,7 +29,7 @@ public:
     
     
     // implement the "static create()" method manually インターフェース
-    CREATE_FUNC(HelloWorld);
+    CREATE_FUNC(Stage);
     
     // キャラクター関連
     BaseChara* _character1;
@@ -45,4 +43,4 @@ public:
     
 };
 
-#endif // __HELLOWORLD_SCENE_H__
+#endif /* BattleScene_h */
