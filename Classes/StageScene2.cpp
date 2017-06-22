@@ -1,16 +1,16 @@
 #pragma execution_character_set("utf-8") // 文字コード指定
-#include "BattleScene.h" // HelloWorldScene.h読み込み
+#include "StageScene2.h" // StageScene2.h読み込み
 #include "SimpleAudioEngine.h"// SimpleAudioEngine.h読み込み
 
 USING_NS_CC; // #define USING_NS_CC using namespace cocos2d
 
-Scene* Stage::createScene() //
+Scene* Stage2::createScene() //
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
     
     // 'layer' is an autorelease object
-    auto layer = Stage::create();
+    auto layer = Stage2::create();
     
     // add layer as a child to scene
     scene->addChild(layer);
@@ -20,7 +20,7 @@ Scene* Stage::createScene() //
 }
 
 // on "init" you need to initialize your instance
-bool Stage::init()
+bool Stage2::init()
 {
     //////////////////////////////
     // 1. super init first
@@ -38,7 +38,7 @@ bool Stage::init()
     
     // タップイベントを取得する
     auto listener = EventListenerTouchOneByOne::create();// シングルタッチ
-    listener->onTouchBegan = CC_CALLBACK_2(Stage::onTouchBegan, this);//タッチしたときに1回だけ処理を実行
+    listener->onTouchBegan = CC_CALLBACK_2(Stage2::onTouchBegan, this);//タッチしたときに1回だけ処理を実行
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);// イベントリスナーの組み込み
     
     
@@ -47,7 +47,6 @@ bool Stage::init()
     // チョコさん
     _character1 = BaseChara::create("res/chocoto.png");// スプライト画像読み込み
     _character1->setAnchorPoint(Vec2(1.0,1.0));// アンカーポイント指定
-    //_character1->setPosition(Vec2(origin.x + 150, origin.y + visibleSize.height / 2 + 300));// チョコっとコメントアウト
     _character1->setPosition(Vec2(origin.x + 550, origin.y + visibleSize.height / 2 - 80));// 位置指定
     _character1->setScale(2.0);// スプライトの拡大率を2.0倍に指定
     
@@ -69,7 +68,6 @@ bool Stage::init()
     // 真紅さん
     _character2 = BaseChara::create("res/sinku.png");
     _character2->setAnchorPoint(Vec2(1.0,1.0));
-    //sprite2->setPosition(Vec2(origin.x + 170, origin.y + visibleSize.height / 2 - 8));// チョコっとコメントアウト
     _character2->setPosition(Vec2(origin.x + 550, origin.y + visibleSize.height / 2 - 180));
     _character2->setScale(2.0);
     _character2->_hp = 100;
@@ -89,7 +87,6 @@ bool Stage::init()
     // しーやさん
     _character3 = BaseChara::create("res/syiya.png");
     _character3->setAnchorPoint(Vec2(1.0,1.0));
-    //sprite3->setPosition(Vec2(origin.x + 600, origin.y + visibleSize.height / 2 - 20));// チョコっとコメントアウト
     _character3->setPosition(Vec2(origin.x + 550, origin.y + visibleSize.height / 2 + 10));
     _character3->_hp = 100;
     _character3->_attackPoint = 10;
@@ -110,7 +107,6 @@ bool Stage::init()
     // ミラさん
     _character4 = BaseChara::create("res/mira.png");
     _character4->setAnchorPoint(Vec2(1.0,1.0));
-    //sprite4->setPosition(Vec2(origin.x + 580, origin.y + visibleSize.height / 2 + 230)); // チョコっとコメントアウト
     _character4->setPosition(Vec2(origin.x + 550, origin.y + visibleSize.height / 2 + 100));
     _character4->setScale(2.0);
     _character4->_hp = 100;
@@ -129,11 +125,10 @@ bool Stage::init()
     
     
     // エネミー1
-    _enemy1 = BaseChara::create("res/Cactuar.png");
+    _enemy1 = BaseChara::create("res/senior_mandora.png");
     _enemy1->setAnchorPoint(Vec2(1.0,1.0));
-    _enemy1->setPosition(Vec2(origin.x + 150, origin.y + visibleSize.height / 2 - 150));
+    _enemy1->setPosition(Vec2(origin.x + 150, origin.y + visibleSize.height / 2 + 30));
     _enemy1->setScale(2.0);
-    //sprite->setRotation(90.0); // チョコっとコメントアウト
     _enemy1->_hp = 100;
     _enemy1->_attackPoint = 10 * arc4random_uniform(10);// 敵の攻撃力設定 0〜90で変化
     this->addChild(_enemy1,1);
@@ -149,36 +144,8 @@ bool Stage::init()
     this->addChild(_enemy1->_hpLabel, 1, 0);
     
     
-    // エネミー2
-    _enemy2 = BaseChara::create("res/Cactuar.png");
-    _enemy2->setAnchorPoint(Vec2(1.0,1.0));
-    _enemy2->setPosition(Vec2(origin.x + 150, origin.y + visibleSize.height / 2));
-    _enemy2->setScale(2.0);
-    //sprite->setRotation(90.0); // チョコっとコメントアウト
-    _enemy2->_hp = 100;
-    _enemy2->_attackPoint = 10 * arc4random_uniform(10);// 敵の攻撃力設定 0〜90で変化
-    this->addChild(_enemy2,1);
-    
-    Label* enemyHp2 = Label::createWithTTF("HP", "fonts/ヒラギノ明朝 ProN W3.ttc" , 20);
-    enemyHp2->setColor(cocos2d::Color3B::BLACK);
-    enemyHp2->setPosition(Vec2(45,30));
-    this->addChild(enemyHp2, 1, 0);
-    
-    _enemy2->_hpLabelPosX = 80;
-    _enemy2->_hpLabelPosY = 30;
-    _enemy2->_hpLabel = _enemy2->createHpLabel();
-    this->addChild(_enemy2->_hpLabel, 1, 0);
-    
-    
-    // オープニング背景
-    /* チョコっとコメントアウト
-     auto background = Sprite::create("res/crystalTower.png");
-     background->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
-     this->addChild(background,0);
-     */
-    
-    // ステージ1背景表示
-    auto background2 = Sprite::create("res/knowledge_plain.png");
+    // ステージ2背景表示
+    auto background2 = Sprite::create("res/dream_world_forest.png");
     background2->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
     this->addChild(background2,0);
     
@@ -192,7 +159,7 @@ bool Stage::init()
 
 
 // 画面をタッチした時の処理
-bool Stage::onTouchBegan(Touch* pTouch, Event* pEvent){
+bool Stage2::onTouchBegan(Touch* pTouch, Event* pEvent){
     
     Vec2 touchPoint = convertTouchToNodeSpace(pTouch);// タッチした画面の座標(X,Y)を取得
     if(touchPoint.x < 0 || touchPoint.x > 600){// 画面外をタッチすると無効
@@ -275,7 +242,7 @@ bool Stage::onTouchBegan(Touch* pTouch, Event* pEvent){
 
 
 // バトル更新処理
-void Stage::update(float delta){
+void Stage2::update(float delta){
     
     // 味方のターン
     if(_state == TYPE_PLAYER_TURN){

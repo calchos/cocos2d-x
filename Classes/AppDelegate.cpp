@@ -1,5 +1,5 @@
 #include "AppDelegate.h" // AppDelegate.h インクルード
-#include "SplashScene.h" // BattleScene.h インクルード
+#include "OpeningTitle.h" // BattleScene.h インクルード
 
 USING_NS_CC; // #define USING_NS_CC using namespace cocos2d
 
@@ -88,7 +88,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = SplashScene::createScene();
+    auto scene = Opening::createScene();
 
     // run
     director->runWithScene(scene);
