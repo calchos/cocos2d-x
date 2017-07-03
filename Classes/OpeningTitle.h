@@ -20,7 +20,7 @@ public:
     static cocos2d::Scene* createScene(); // publicでcreateScene()を継承
     virtual bool init(); // 仮想関数でオーバーライド
     
-    // バトル画面(ステージ2)に遷移
+    // 次のシーンに遷移
     void nextSceneCallback(cocos2d::Ref* pSender);
 
     

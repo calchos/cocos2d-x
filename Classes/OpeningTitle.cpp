@@ -1,6 +1,6 @@
 #pragma execution_character_set("utf-8") // 文字コード指定
 #include "OpeningTitle.h" // OpeningTitle.h 読み込み
-#include "StageScene2.h" // StageScene2.h 読み込み
+#include "OpeningTextScene.hpp" // StageScene2.h 読み込み
 #include "SimpleAudioEngine.h"// SimpleAudioEngine.h 読み込み
 
 USING_NS_CC; // #define USING_NS_CC using namespace cocos2d
@@ -95,7 +95,12 @@ bool Opening::init() // 初期化処理
     _character4->setScale(2.0);
     this->addChild(_character4, 1);
     
-
+    
+    // タイトルロゴ
+    auto titleLogo = Sprite::create("res/crystal_fade_logo.png");
+    titleLogo->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+    this->addChild(titleLogo,1);
+    
     // オープニング背景
     auto background = Sprite::create("res/crystal_tower.png");
     background->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
@@ -108,15 +113,14 @@ bool Opening::init() // 初期化処理
 
 void Opening::nextSceneCallback(Ref* pSender){
     
-    // BGMの停止
-    CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
-    
-    
     // 効果音再生
     CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/button_push.m4a");
     
-    // replaceSceneで画面遷移を行う Openingを破棄して0.5秒かけてホワイトアウトしてStage2に遷移する
-    Director::getInstance()->replaceScene(TransitionFade::create(0.5,Stage2::createScene(),Color3B::WHITE));
+    // BGMの停止
+    CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+    
+    // replaceSceneで画面遷移を行う Openingを破棄して0.5秒かけてホワイトアウトしてOpeningTextに遷移する
+    Director::getInstance()->replaceScene(TransitionFade::create(0.5,OpeningText::createScene(),Color3B::WHITE));
 }
 
 
