@@ -59,12 +59,6 @@ bool Opening::init() // 初期化処理
     // BGM再生
     CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("music/feeling_for_crystal.m4a", true);
     
-    // タップイベントを取得する
-    /*
-    auto listener = EventListenerTouchOneByOne::create();// シングルタッチ
-    listener->onTouchBegan = CC_CALLBACK_2(Opening::onTouchBegan, this);//タッチしたときに1回だけ処理を実行
-    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);// イベントリスナーの組み込み
-     */
     
     // チョコさんスプライト表示
     _character1 = BaseChara::create("res/chocoto.png");// スプライト画像読み込み

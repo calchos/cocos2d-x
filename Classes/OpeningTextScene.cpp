@@ -36,7 +36,7 @@ bool OpeningText::init() // 初期化処理
     Director::getInstance()->setDisplayStats(false); // stats OFF*
     
     // テキストの内容
-    auto text = Label::createWithTTF("東京タワーの天辺に出現したクリスタル。\nそれは世界の全てをコントロールする力を持っておりセントラルクリスタルと呼ばれていた。\nそのクリスタルから突如闇の力が解き放たれ世界に魔物が溢れようとしていた。\nこの危機に4人のクリスタルを守護する者ーークリスタルセイヴァーが召喚される。\n果たして彼らは世界の危機を救うことができるのだろうか…。\n","fonts/ヒラギノ明朝 ProN W3.ttc", 20);
+    auto text = Label::createWithTTF("セントラルタワーの天辺に出現したクリスタル。\nそれは世界の全てをコントロールする力を持っておりセントラルクリスタルと呼ばれていた。\nそのクリスタルから突如闇の力が解き放たれ世界に魔物が溢れようとしていた。\nこの危機に4人のクリスタルを守護する者ーークリスタルセイヴァーが召喚される。\n果たして彼らは世界の危機を救うことができるのだろうか…。\n","fonts/ヒラギノ明朝 ProN W3.ttc", 20);
     // テキストの位置指定
     text->setPosition(Vec2(visibleSize.width / 2 + 100, visibleSize.height / 4));
     // テキストの文字色指定
