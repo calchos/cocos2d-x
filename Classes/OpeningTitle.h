@@ -2,8 +2,8 @@
 #ifndef __OPENING_TITLE_H__
 #define __OPENING_TITLE_H__
 
-#include "cocos2d.h" // cocos2d.hインクルード
-#include "BaseChara.hpp"// BaseChara.hppインクルード
+#include "cocos2d.h"
+#include "BaseChara.hpp"
 
 
 class Opening : public cocos2d::Layer // 派生クラス HelloWorld作成

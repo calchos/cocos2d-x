@@ -26,7 +26,7 @@ bool SplashScene::init(){
     this->addChild(background, 0);
     
     // タイトル画面に画面遷移する
-    this->scheduleOnce(schedule_selector(SplashScene::changeTitleScene),3.0f);
+    this->scheduleOnce(schedule_selector(SplashScene::changeTitleScene),2.0f);
     
     return true;
 }

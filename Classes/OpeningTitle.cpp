@@ -1,16 +1,16 @@
 #pragma execution_character_set("utf-8") // 文字コード指定
-#include "OpeningTitle.h" // OpeningTitle.h 読み込み
-#include "OpeningTextScene.hpp" // StageScene2.h 読み込み
-#include "SimpleAudioEngine.h"// SimpleAudioEngine.h 読み込み
+#include "OpeningTitle.h"
+#include "OpeningTextScene.hpp"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC; // #define USING_NS_CC using namespace cocos2d
 
 
-Opening::Opening(){} // コンストラクタ：オブジェクトが生成されたときに最初に実行される
+Opening::Opening(){} // コンストラクタ生成
 
-// デストラクタ：オブジェクトが破棄されるときに実行される
-Opening::~Opening(){
-    removeAllChildrenWithCleanup(true); // 親クラスにaddChildされたノードを全て削除 画面遷移時に不要になったオブジェクトを削除しメモリリークを防止する
+
+Opening::~Opening(){ // デストラクタ生成
+    removeAllChildrenWithCleanup(true); // 親クラスにaddChildされたノードを全て削除　メモリリーク防止
 }
 
 Scene* Opening::createScene() // シーン生成処理
@@ -53,10 +53,10 @@ bool Opening::init() // 初期化処理
     this->addChild(menu, 1, 0);
     
     
-    // BGMプリロード
+    // オープニングBGMプリロード
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("music/feeling_for_crystal.m4a");
     
-    // BGM再生
+    // オープニングBGM再生
     CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("music/feeling_for_crystal.m4a", true);
     
     
@@ -105,15 +105,16 @@ bool Opening::init() // 初期化処理
 }
 
 
+// 次のシーンへ遷移するコールバック関数
 void Opening::nextSceneCallback(Ref* pSender){
     
     // 効果音再生
     CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/button_push.m4a");
     
-    // BGMの停止
+    // BGMの停止 ボタンを押したタイミングで効果音を再生してオープニングBGMを止める
     CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
     
-    // replaceSceneで画面遷移を行う Openingを破棄して0.5秒かけてホワイトアウトしてOpeningTextに遷移する
+    // replaceSceneで画面遷移を行う オープニングタイトル画面を破棄して0.5秒かけてホワイトアウトしてOpeningTextに遷移する
     Director::getInstance()->replaceScene(TransitionFade::create(0.5,OpeningText::createScene(),Color3B::WHITE));
 }
 

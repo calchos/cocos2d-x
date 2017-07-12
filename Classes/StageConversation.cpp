@@ -1,17 +1,16 @@
 #pragma execution_character_set("utf-8") // 文字コード指定
-#include "OpeningTextScene.hpp"
-#include "StageConversation.hpp"
-#include "SimpleAudioEngine.h"
+#include "StageConversation.hpp" 
+#include "SimpleAudioEngine.h"　
 
 USING_NS_CC; // #define USING_NS_CC using namespace cocos2d
 
-Scene* OpeningText::createScene() // シーン生成処理
+Scene* StageConversation::createScene() // シーン生成処理
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
     
     // 'layer' is an autorelease object
-    auto layer = OpeningText::create();
+    auto layer = StageConversation::create();
     
     // add layer as a child to scene
     scene->addChild(layer);
@@ -21,7 +20,7 @@ Scene* OpeningText::createScene() // シーン生成処理
 }
 
 // on "init" you need to initialize your instance
-bool OpeningText::init() // 初期化処理
+bool StageConversation::init() // 初期化処理
 {
     //////////////////////////////
     // 1. super init first
@@ -37,13 +36,13 @@ bool OpeningText::init() // 初期化処理
     Director::getInstance()->setDisplayStats(false); // stats OFF*
     
     // BGMプリロード
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("music/to_the_future_with_light.m4a");
+    // CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("music/to_the_future_with_light.m4a");
     
     // BGM再生
-    CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("music/to_the_future_with_light.m4a", true);
+    // CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("music/to_the_future_with_light.m4a", true);
     
     // テキストの内容
-    auto text = Label::createWithTTF("セントラルタワーの天辺に出現したクリスタル。\nそれは世界の全てをコントロールする力を持っており\nセントラルクリスタルと呼ばれていた。\nそのクリスタルから突如闇の力が解き放たれ\n世界に魔物が溢れようとしていた。\nこの危機に4人のクリスタルを守護する者\nーークリスタルセイヴァーが召喚される。\n果たして彼らは世界の危機を救うことができるのだろうか…。\n","fonts/ヒラギノ明朝 ProN W3.ttc", 20);
+    auto text = Label::createWithTTF("チョコっと「あれぇ〜？ここどこだろう？？」","fonts/ヒラギノ明朝 ProN W3.ttc", 20);
     // テキストの位置指定
     text->setPosition(Vec2(visibleSize.width / 2 + 30 , visibleSize.height / 4));
     // テキストの文字色指定
@@ -75,6 +74,13 @@ bool OpeningText::init() // 初期化処理
         
     }
     
+    // チョコさん
+    _character1 = BaseChara::create("res/chocoto.png");// スプライト画像読み込み
+    _character1->setAnchorPoint(Vec2(1.0,1.0));// アンカーポイント指定
+    _character1->setPosition(origin.x + 500, origin.y + visibleSize.height / 2 );// 位置指定
+    _character1->setScale(2.0);// スプライトの拡大率を2.0倍に指定
+    this->addChild(_character1,1);// 画面描画
+    
     // MenuItemImageでメニューボタン追加 引数にはボタンを押した時の動作を指定
     /*
     auto nextButton = MenuItemImage::create("res/next.png","res/next_pushed.png",CC_CALLBACK_1(OpeningText::nextSceneCallback, this));
@@ -82,11 +88,11 @@ bool OpeningText::init() // 初期化処理
     auto menu = Menu::create(nextButton, NULL);//
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1, 0);
-     */
+    */
     
-
+    
     // オープニングテキスト背景
-    auto background = Sprite::create("res/crystal_tower_shadow.png");
+    auto background = Sprite::create("res/knowledge_plain.png");
     background->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
     this->addChild(background,0);
     
@@ -94,12 +100,16 @@ bool OpeningText::init() // 初期化処理
     
 }
 
-void OpeningText::nextSceneCallback(Ref* pSender){
+/*
+void StageConversation::nextSceneCallback(Ref* pSender){
     
+    // 効果音再生
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/button_push.m4a");
     
     // BGMの停止
     CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
     
-    // replaceSceneで画面遷移を行う Openingを破棄して0.5秒かけてホワイトアウトしてStageConvasationに遷移する
-    Director::getInstance()->replaceScene(TransitionFade::create(0.5,StageConversation::createScene(),Color3B::WHITE));
+    // replaceSceneで画面遷移を行う Openingを破棄して0.5秒かけてホワイトアウトしてStageに遷移する
+    Director::getInstance()->replaceScene(TransitionFade::create(0.5,Stage::createScene(),Color3B::WHITE));
 }
+ */

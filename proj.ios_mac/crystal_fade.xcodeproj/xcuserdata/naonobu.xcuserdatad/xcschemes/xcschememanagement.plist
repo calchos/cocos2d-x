@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>test-desktop copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>test-desktop.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -23,6 +28,16 @@
 			<true/>
 		</dict>
 		<key>5087E73D17EB910900C73F5D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>54AA3B2B1F128E3000E8A3DF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>54AA3B4A1F128E3800E8A3DF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
