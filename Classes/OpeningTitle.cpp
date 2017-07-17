@@ -47,7 +47,7 @@ bool Opening::init() // 初期化処理
     // スタートボタン表示
     // MenuItemImageでメニューボタン追加 引数にはボタンを押した時の動作を指定
     auto startItem = MenuItemImage::create("res/start.png","res/start_pushed.png",CC_CALLBACK_1(Opening::nextSceneCallback, this));
-    startItem->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 4));// ボタンの位置を画面中央に指定
+    startItem->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 4 - 40));// ボタンの位置を画面中央に指定
     auto menu = Menu::create(startItem, NULL);//
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1, 0);
@@ -92,7 +92,7 @@ bool Opening::init() // 初期化処理
     
     // タイトルロゴ
     auto titleLogo = Sprite::create("res/crystal_fade_logo.png");
-    titleLogo->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+    titleLogo->setPosition(Point(visibleSize.width / 2 + 10, visibleSize.height / 2 - 30));
     this->addChild(titleLogo,1);
     
     // オープニング背景

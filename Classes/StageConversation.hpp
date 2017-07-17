@@ -19,6 +19,8 @@ public:
     // バトル画面(ステージ1)に遷移
     void nextSceneCallback(cocos2d::Ref* pSender);
     
+    // タッチ処理
+    virtual bool onTouchBegan(cocos2d::Touch* pTouch, cocos2d::Event* pEvent);// タップしたときに1回だけ実行する処理
     
     // implement the "static create()" method manually インターフェース
     CREATE_FUNC(StageConversation);
@@ -32,6 +34,7 @@ public:
     // 敵キャラクター
     BaseChara* _enemy1;
     BaseChara* _enemy2;
+    
     
 };
 

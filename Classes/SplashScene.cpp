@@ -19,7 +19,7 @@ bool SplashScene::init(){
     cocos2d::Point origin = cocos2d::Director::getInstance()->getVisibleOrigin();
     
     //背景
-    auto background = cocos2d::Sprite::create("HelloWorld.png");
+    auto background = cocos2d::Sprite::create("splash_image.png");
     
     //中央に表示されるように座標を設定
     background->setPosition(cocos2d::Point(winSize.width /2 ,winSize.height/2));

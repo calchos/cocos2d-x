@@ -76,13 +76,13 @@ bool OpeningText::init() // 初期化処理
     }
     
     // MenuItemImageでメニューボタン追加 引数にはボタンを押した時の動作を指定
-    /*
+    
     auto nextButton = MenuItemImage::create("res/next.png","res/next_pushed.png",CC_CALLBACK_1(OpeningText::nextSceneCallback, this));
     nextButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 4 - 140));// ボタンの位置を画面中央に指定
     auto menu = Menu::create(nextButton, NULL);//
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1, 0);
-     */
+    
     
 
     // オープニングテキスト背景
@@ -94,6 +94,7 @@ bool OpeningText::init() // 初期化処理
     
 }
 
+// 次のシーンへ遷移するためのコールバック関数
 void OpeningText::nextSceneCallback(Ref* pSender){
     
     
@@ -101,5 +102,5 @@ void OpeningText::nextSceneCallback(Ref* pSender){
     CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
     
     // replaceSceneで画面遷移を行う Openingを破棄して0.5秒かけてホワイトアウトしてStageConvasationに遷移する
-    Director::getInstance()->replaceScene(TransitionFade::create(0.5,StageConversation::createScene(),Color3B::WHITE));
+    Director::getInstance()->replaceScene(TransitionFade::create(0.7,StageConversation::createScene()));
 }

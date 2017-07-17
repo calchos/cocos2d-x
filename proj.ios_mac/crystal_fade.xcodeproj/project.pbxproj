@@ -44,8 +44,10 @@
 		5409C04F1EFC1FF300719222 /* OpeningTextScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5409C04D1EFC1FF300719222 /* OpeningTextScene.cpp */; };
 		542A900B1EFFD996009C5062 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 542A900A1EFFD996009C5062 /* Images.xcassets */; };
 		54330C461EF661FB00B1B93B /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54330C451EF661FB00B1B93B /* SplashScene.cpp */; };
+		543C1D151F1CCAEA001C31BB /* StageScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 543C1D141F1CCAEA001C31BB /* StageScene.cpp */; };
 		544735751EF82E9600577853 /* StageScene2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 544735741EF82E9600577853 /* StageScene2.cpp */; };
 		54480F791F15347E00616F7C /* StageConversation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54480F771F15347E00616F7C /* StageConversation.cpp */; };
+		548D99721F1D21A80048D6BE /* splash_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 548D99711F1D21A80048D6BE /* splash_image.png */; };
 		549D7A141EFADC15001771EF /* music in Resources */ = {isa = PBXBuildFile; fileRef = 549D7A131EFADC15001771EF /* music */; };
 		54B1EAA11EF02B8E008202F2 /* OpeningTitle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54B1EAA01EF02B8E008202F2 /* OpeningTitle.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
@@ -140,7 +142,6 @@
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		5400BD171ED06EC10082C107 /* BaseChara.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseChara.cpp; sourceTree = "<group>"; };
 		5400BD181ED06EC10082C107 /* BaseChara.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BaseChara.hpp; sourceTree = "<group>"; };
-		5400BD1B1ED073CC0082C107 /* BaseChara.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseChara.h; sourceTree = "<group>"; };
 		5400BD1C1ED190CD0082C107 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		5409C04D1EFC1FF300719222 /* OpeningTextScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpeningTextScene.cpp; sourceTree = "<group>"; };
 		5409C04E1EFC1FF300719222 /* OpeningTextScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpeningTextScene.hpp; sourceTree = "<group>"; };
@@ -148,10 +149,13 @@
 		54330C451EF661FB00B1B93B /* SplashScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SplashScene.cpp; sourceTree = "<group>"; };
 		54330C481EF68FA500B1B93B /* OpeningTitle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpeningTitle.h; sourceTree = "<group>"; };
 		54330C491EF6913800B1B93B /* SplashScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SplashScene.h; sourceTree = "<group>"; };
+		543C1D141F1CCAEA001C31BB /* StageScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StageScene.cpp; sourceTree = "<group>"; };
+		543C1D161F1CCB2A001C31BB /* StageScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageScene.h; sourceTree = "<group>"; };
 		544735741EF82E9600577853 /* StageScene2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StageScene2.cpp; sourceTree = "<group>"; };
 		544735781EF83ABA00577853 /* StageScene2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StageScene2.h; sourceTree = "<group>"; };
 		54480F771F15347E00616F7C /* StageConversation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StageConversation.cpp; sourceTree = "<group>"; };
 		54480F781F15347E00616F7C /* StageConversation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StageConversation.hpp; sourceTree = "<group>"; };
+		548D99711F1D21A80048D6BE /* splash_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_image.png; sourceTree = "<group>"; };
 		549D7A131EFADC15001771EF /* music */ = {isa = PBXFileReference; lastKnownFileType = folder; path = music; sourceTree = "<group>"; };
 		54AA3B491F128E3000E8A3DF /* test-desktop copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "test-desktop copy-Info.plist"; path = "/Users/naonobu/cocos_project/crystal_fade/proj.ios_mac/test-desktop copy-Info.plist"; sourceTree = "<absolute>"; };
 		54AA3B681F128E3800E8A3DF /* test-desktop copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "test-desktop copy2-Info.plist"; path = "/Users/naonobu/cocos_project/crystal_fade/proj.ios_mac/test-desktop copy2-Info.plist"; sourceTree = "<absolute>"; };
@@ -273,6 +277,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				548D99711F1D21A80048D6BE /* splash_image.png */,
 				542A900A1EFFD996009C5062 /* Images.xcassets */,
 				549D7A131EFADC15001771EF /* music */,
 				521A8EA819F11F5000D177D7 /* fonts */,
@@ -288,13 +293,14 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				543C1D161F1CCB2A001C31BB /* StageScene.h */,
+				543C1D141F1CCAEA001C31BB /* StageScene.cpp */,
 				54CAED281EF9717B00B87D9A /* BattleScene.h */,
 				544735741EF82E9600577853 /* StageScene2.cpp */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				5400BD171ED06EC10082C107 /* BaseChara.cpp */,
 				5400BD181ED06EC10082C107 /* BaseChara.hpp */,
-				5400BD1B1ED073CC0082C107 /* BaseChara.h */,
 				5400BD1C1ED190CD0082C107 /* config.h */,
 				54B1EAA01EF02B8E008202F2 /* OpeningTitle.cpp */,
 				54330C451EF661FB00B1B93B /* SplashScene.cpp */,
@@ -446,6 +452,7 @@
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
+				548D99721F1D21A80048D6BE /* splash_image.png in Resources */,
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
 				549D7A141EFADC15001771EF /* music in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
@@ -482,6 +489,7 @@
 				5409C04F1EFC1FF300719222 /* OpeningTextScene.cpp in Sources */,
 				5400BD191ED06EC10082C107 /* BaseChara.cpp in Sources */,
 				544735751EF82E9600577853 /* StageScene2.cpp in Sources */,
+				543C1D151F1CCAEA001C31BB /* StageScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,

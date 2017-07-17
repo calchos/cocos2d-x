@@ -12,7 +12,8 @@ public:
     
     // クラス生成
     virtual bool init();
-    static BaseChara* create(std::string imageFilePath);
+    static BaseChara* create(std::string imageFilePath);// スプライト画像生成
+ 
     
     // HP表示
     cocos2d::Label* _hpLabel = nullptr; // HPを表示するラベル
