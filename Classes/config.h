@@ -1,18 +1,22 @@
 #ifndef config_h
 #define config_h
 
-// キャラクター情報を列挙型で指定
-enum CHARACTERS {
-    TYPE_CHARACTER_1,
-    TYPE_CHARACTER_2,
-    TYPE_CHARACTER_3,
-    TYPE_CHARACTER_4,
+
+// 属性情報を列挙型で指定
+enum ELEMENTS {
+    TYPE_FIRE,// 火
+    TYPE_WATER,// 水
+    TYPE_WIND,// 風
+    TYPE_EARTH,// 地
+    TYPE_LIGHT,// 光
+    TYPE_DARK// 闇
 };
 
-// 敵情報を列挙型で指定
-enum ENEMIES {
-    TYPE_ENEMY_1,
-    TYPE_ENEMY_2,
+// コマンド情報を列挙型で指定
+enum COMMANDS {
+    TYPE_WEAPON,// 武器攻撃
+    TYPE_JUMP,// ジャンプ
+    TYPE_MAGIC// 魔法攻撃
 };
 
 #endif /* config_h */

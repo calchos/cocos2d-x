@@ -26,6 +26,15 @@ public:
     
     void update(float delta);// 更新処理定義
     
+    int playerAttack();// プレイヤーキャラクターのトータルダメージ数
+    int playerPredefense();// プレイヤーキャラクターの先制防御
+    
+    int enemyPreemptiveAttack();// 敵キャラクターの先制攻撃
+    int enemyAttack();// 敵キャラクターのトータルダメージ数
+    int m,r; // 乱数用の変数
+    
+    bool _preemptive_attack; // 敵の先制攻撃フラグ
+    
     // タッチ処理
     virtual bool onTouchBegan(cocos2d::Touch* pTouch, cocos2d::Event* pEvent);// タッチしたときに1回だけ実行する処理
     

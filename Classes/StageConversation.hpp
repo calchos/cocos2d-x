@@ -33,7 +33,6 @@ public:
     
     // 敵キャラクター
     BaseChara* _enemy1;
-    BaseChara* _enemy2;
     
     
 };

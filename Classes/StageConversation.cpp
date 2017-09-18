@@ -50,14 +50,14 @@ bool StageConversation::init() // 初期化処理
     
     
     // テキストの内容
-    auto _text1 = Label::createWithTTF("あれぇ〜？ここどこだろう？？\nチョコちゃんﾉｼ\nあっ！ミラさんだ！\nあれ？ここどこだろう？\n夢ノ国なのかしら？\nあっ！真紅さんにしーちゃんだ！！\nチョコちゃんうしろ！うしろ！⬇\n","fonts/ヒラギノ明朝 ProN W6.ttc", 20);
+    auto _text1 = Label::createWithTTF("チョコっと「あれぇ〜？ここどこだろう？」\nミラ「チョコちゃんﾉｼ」\nチョコっと「あっ！ミラさんだ！」\n真紅「あれ？ここどこだろう？夢ノ国なのかしら？」\nチョコっと「あっ！真紅さんにしーちゃんだ！！」\nしーや「チョコちゃんうしろ！うしろ！」⬇\n","fonts/ヒラギノ明朝 ProN W6.ttc", 14);
     // テキストの位置指定
-    _text1->setPosition(Vec2(visibleSize.width / 2 - 50 , visibleSize.height / 4));
+    _text1->setPosition(Vec2(visibleSize.width / 2 - 27, visibleSize.height / 4 - 88));
     // テキストの文字色指定
     _text1->setColor(Color3B::WHITE);
     _text1->setOpacity(0);// テキストの透明化
     _text1->setTag(1);// _text1をタグ指定
-    this->addChild(_text1,1);// テキストを表示
+    this->addChild(_text1,2);// テキストを表示
     
     // テキストの透明化解除
     // テキストの長さ分 forループ回す
@@ -72,7 +72,7 @@ bool StageConversation::init() // 初期化処理
                 _text1->getLetter(i)->setOpacity(255); //テキストを1文字ずつ透明化解除
             }
         });
-        //
+        // DelayTimeで待ち時間を設定
         auto delay = DelayTime::create(.2 * i);
         // 複数のアクションを順番に実行 delay→func
         auto seq = Sequence::create(delay, func, nullptr);
@@ -94,7 +94,7 @@ bool StageConversation::init() // 初期化処理
     // 真紅さん
     _character2 = BaseChara::create("res/sinku.png");
     _character2->setAnchorPoint(Vec2(1.0,1.0));
-    _character2->setPosition(Vec2(origin.x + 580, origin.y + visibleSize.height / 2 - 50));
+    _character2->setPosition(Vec2(origin.x + 580, origin.y + visibleSize.height / 2 - 45));
     _character2->setScale(2.0);
     this->addChild(_character2,1);
     
@@ -114,6 +114,11 @@ bool StageConversation::init() // 初期化処理
     _character4->setScale(2.0);
     this->addChild(_character4, 1);
     
+    // テキスト表示ウィンドウ
+    auto window = Sprite::create("res/menu_window_small.png");
+    window->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y - 180));
+    this->addChild(window,1);
+    
     
     // 背景
     auto background = Sprite::create("res/knowledge_plain.png");
@@ -124,7 +129,7 @@ bool StageConversation::init() // 初期化処理
     
 }
 
-
+// 画面を1回タップしたときの処理
 bool StageConversation::onTouchBegan(Touch* pTouch, Event* pEvent){
     
     
@@ -134,17 +139,19 @@ bool StageConversation::onTouchBegan(Touch* pTouch, Event* pEvent){
     
     Director::getInstance()->setDisplayStats(false); // stats OFF*
     
+    // _text1をタグを指定して呼び出す
     auto _text1 = this->getChildByTag(1);
+    // _text1を非表示にする
     _text1->setVisible(false);
 
     // テキストの内容
-    auto _text2 = Label::createWithTTF("えっ？あっ！なにあのサボテンみたいなの！？\nよーし！みんなであのサボテンさんを\nチョコっとやっつけちゃおう！\n","fonts/ヒラギノ明朝 ProN W6.ttc", 20);
+    auto _text2 = Label::createWithTTF("チョコっと「えっ？あっ！なにあのサボテンみたいなの！？\nよーし！みんなであのサボテンさんをチョコっと\nやっつけちゃおう！」\n","fonts/ヒラギノ明朝 ProN W6.ttc", 14);
     // テキストの位置指定
-    _text2->setPosition(Vec2(visibleSize.width / 2 - 50 , visibleSize.height / 4));
+    _text2->setPosition(Vec2(visibleSize.width / 2  , visibleSize.height / 4 - 60));
     // テキストの文字色指定
     _text2->setColor(Color3B::WHITE);
     _text2->setOpacity(0);// テキストの透明化
-    this->addChild(_text2,1);// テキストを表示
+    this->addChild(_text2,2);// テキストを表示
     
     // テキストの透明化解除
     // テキストの長さ分 forループ回す
@@ -175,10 +182,11 @@ bool StageConversation::onTouchBegan(Touch* pTouch, Event* pEvent){
 
     // MenuItemImageでメニューボタン追加 引数にはボタンを押した時の動作を指定
      auto nextButton = MenuItemImage::create("res/next.png","res/next_pushed.png",CC_CALLBACK_1(StageConversation::nextSceneCallback, this));
-     nextButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 4 - 140));// ボタンの位置を画面中央に指定
+     nextButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 4 - 120));// ボタンの位置を画面中央に指定
      auto menu = Menu::create(nextButton, NULL);//
      menu->setPosition(Vec2::ZERO);
      this->addChild(menu, 1, 0);
+    
      
     
     // エネミー1
@@ -197,17 +205,15 @@ bool StageConversation::onTouchBegan(Touch* pTouch, Event* pEvent){
     return true;
 }
 
-
-
-
+// 次のシーンへ遷移するためのコールバック関数
 void StageConversation::nextSceneCallback(Ref* pSender){
     
     // 効果音再生
-    // CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/button_push.m4a");
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/battle_encount.m4a");
     
     // BGMの停止
     CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
     
-    // replaceSceneで画面遷移を行う Openingを破棄して0.5秒かけてホワイトアウトしてStageに遷移する
+    // replaceSceneで画面遷移を行う StageConversationを破棄して0.5秒かけてホワイトアウトしてStageに遷移する
     Director::getInstance()->replaceScene(TransitionRotoZoom::create(0.5,StageScene::createScene()));
 }
