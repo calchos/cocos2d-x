@@ -50,7 +50,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
         // ウィンドゥサイズの設定
         glview = GLViewImpl::createWithRect("test", cocos2d::Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
 #else
-        glview = GLViewImpl::create("test");// createメソッドで
+        glview = GLViewImpl::create("test");
 #endif
         director->setOpenGLView(glview);// glviewセット
     }

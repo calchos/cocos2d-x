@@ -535,7 +535,7 @@ void btConvexConvexAlgorithm ::processCollision (const btCollisionObjectWrapper*
 				btScalar maxDist = threshold;
 				
 				bool foundSepAxis = false;
-				if (0)
+                if (/* DISABLES CODE */ (0))
 				{
 					polyhedronB->initializePolyhedralFeatures();
 					 foundSepAxis = btPolyhedralContactClipping::findSeparatingAxis(

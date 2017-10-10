@@ -23,6 +23,10 @@ public:
     
     State _state = TYPE_PLAYER_TURN; // 最初はプレイヤーのターンから開始
     bool _gameEvent = false; // 勝利イベント・敗北イベントを一回のみ実行するフラグ
+    bool _player1Turn = false;// プレイヤー1のターンフラグ
+    bool _player2Turn = false;// プレイヤー2のターンフラグ
+    bool _player3Turn = false;// プレイヤー3のターンフラグ
+    bool _player4Turn = false;// プレイヤー4のターンフラグ
     
     void update(float delta);// 更新処理定義
     
@@ -31,12 +35,14 @@ public:
     
     int enemyPreemptiveAttack();// 敵キャラクターの先制攻撃
     int enemyAttack();// 敵キャラクターのトータルダメージ数
-    int m,r; // 乱数用の変数
-    
+
     bool _preemptive_attack; // 敵の先制攻撃フラグ
     
-    // タッチ処理
-    virtual bool onTouchBegan(cocos2d::Touch* pTouch, cocos2d::Event* pEvent);// タッチしたときに1回だけ実行する処理
+
+    
+    // 画面タップ処理
+    virtual bool onTouchBegan(cocos2d::Touch* pTouch, cocos2d::Event* pEvent);// タップした瞬間に1回だけ実行する処理
+    virtual void onTouchEnded(cocos2d::Touch* pTouch, cocos2d::Event* pEvent);// タップを離した瞬間に1回だけ実行する処理
     
     
     // implement the "static create()" method manually インターフェース
@@ -47,6 +53,10 @@ public:
     BaseChara* _character2;
     BaseChara* _character3;
     BaseChara* _character4;
+    BaseChara* _character5;
+    BaseChara* _character6;
+    BaseChara* _character7;
+    BaseChara* _character8;
     
     // 敵キャラクター
     BaseChara* _enemy1;

@@ -1232,7 +1232,7 @@ void	processCollisionTask(void* userPtr, void* lsMemPtr)
 #ifdef USE_SEPDISTANCE_UTIL
 										lsMem.getlocalCollisionAlgorithm()->m_sepDistance.getConservativeSeparatingDistance()<=0.f
 #else
-										1
+                                        /* DISABLES CODE */ (1)
 #endif											
 										)
 										{
