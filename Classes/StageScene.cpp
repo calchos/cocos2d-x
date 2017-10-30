@@ -1,6 +1,6 @@
 #pragma execution_character_set("utf-8") // 文字コード指定
 #include "StageConversation.hpp" // StageConversation.hpp読み込み
-// #include "StageConversation2.hpp" // StageConversation2.hpp読み込み
+#include "StageConversation2.hpp" // StageConversation2.hpp読み込み
 #include "StageScene.h" // HelloWorldScene.h読み込み
 #include "SimpleAudioEngine.h"// SimpleAudioEngine.h読み込み
 
@@ -100,9 +100,10 @@ bool StageScene::init()
     _enemy1->setScale(2.0);
     _enemy1->setTag(4);
     this->addChild(_enemy1,1);
+    
 
     // 敵出現テキスト
-    auto _text1 = Label::createWithSystemFont("ソダテンダーがあらわれた！▼", "fonts/ヒラギノ明朝 ProN W3.ttc",18);
+    auto _text1 = Label::createWithSystemFont("ソダテンダーがあらわれた！▼", "fonts/ヒラギノ明朝 ProN W6.ttc",18);
     _text1->setPosition(Point(visibleSize.width / 2 + origin.x - 60, visibleSize.height / 2 + origin.y - 180));
     _text1->setTag(5);// text1をタグ指定
     this->addChild(_text1,2);
@@ -127,17 +128,15 @@ bool StageScene::init()
 bool StageScene::onTouchBegan(Touch* pTouch, Event* pEvent){
     
     // 戦闘に勝利したら会話シーン2の画面に遷移する
-    /*
     if(_state == TYPE_WIN){
-        Director::getInstance()->replaceScene(TransitionFade::create(2.5
+        Director::getInstance()->replaceScene(TransitionFade::create(1.0
                                                                      , StageConversation2::createScene()
                                                                      , Color3B::WHITE));
     }
-    */
     
     // 戦闘に負けたら会話シーン1の画面に戻る
     if(_state == TYPE_LOSE){
-        Director::getInstance()->replaceScene(TransitionFade::create(2.5
+        Director::getInstance()->replaceScene(TransitionFade::create(2.0
                                                                      , StageConversation::createScene()
                                                                      , Color3B::BLACK));
     }
@@ -183,7 +182,7 @@ bool StageScene::onTouchBegan(Touch* pTouch, Event* pEvent){
         _character5->setTag(14);
         this->addChild(_character5,1);// 画面描画
         
-        auto _text2 = Label::createWithSystemFont("チョコっとの武器攻撃。\nクリスタルがチョコっとに力を与える▼", "fonts/ヒラギノ明朝 ProN W3.ttc",18);
+        auto _text2 = Label::createWithSystemFont("チョコっとの武器攻撃。\nクリスタルがチョコっとに力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",18);
         _text2->setPosition(Point(visibleSize.width / 2 + origin.x - 30, visibleSize.height / 2 + origin.y - 180));
         _text2->setTag(6);
         this->addChild(_text2,2);
@@ -197,7 +196,7 @@ bool StageScene::onTouchBegan(Touch* pTouch, Event* pEvent){
         this->addChild(_crystal,0);
         
         // クリスタルパワー
-        auto _crystalValue = Label::createWithSystemFont(StringUtils::toString(_crystalPower1),"fonts/ヒラギノ明朝 ProN W3.ttc",30);
+        auto _crystalValue = Label::createWithSystemFont(StringUtils::toString(_crystalPower1),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
         _crystalValue->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
         _crystalValue->setTag(8);
         this->addChild(_crystalValue,2);
@@ -226,7 +225,7 @@ bool StageScene::onTouchBegan(Touch* pTouch, Event* pEvent){
         _character6->setTag(15);
         this->addChild(_character6,1);// 画面描画
         
-        auto _text2 = Label::createWithSystemFont("真紅の歌う攻撃。\nクリスタルが真紅に力を与える▼", "fonts/ヒラギノ明朝 ProN W3.ttc",18);
+        auto _text2 = Label::createWithSystemFont("真紅の歌う攻撃。\nクリスタルが真紅に力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",18);
         _text2->setPosition(Point(visibleSize.width / 2 + origin.x - 50, visibleSize.height / 2 + origin.y - 180));
         _text2->setTag(6);
         this->addChild(_text2,2);
@@ -240,7 +239,7 @@ bool StageScene::onTouchBegan(Touch* pTouch, Event* pEvent){
         this->addChild(_crystal,0);
         
         // クリスタルパワー
-        auto _crystalValue = Label::createWithSystemFont(StringUtils::toString(_crystalPower2),"fonts/ヒラギノ明朝 ProN W3.ttc",30);
+        auto _crystalValue = Label::createWithSystemFont(StringUtils::toString(_crystalPower2),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
         _crystalValue->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
         _crystalValue->setTag(8);
         this->addChild(_crystalValue,2);
@@ -270,7 +269,7 @@ bool StageScene::onTouchBegan(Touch* pTouch, Event* pEvent){
         _character7->setTag(16);
         this->addChild(_character7,1);// 画面描画
         
-        auto _text2 = Label::createWithSystemFont("しーやの魔法攻撃。\nクリスタルがしーやに力を与える▼", "fonts/ヒラギノ明朝 ProN W3.ttc",18);
+        auto _text2 = Label::createWithSystemFont("しーやの魔法攻撃。\nクリスタルがしーやに力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",18);
         _text2->setPosition(Point(visibleSize.width / 2 + origin.x - 50, visibleSize.height / 2 + origin.y - 180));
         _text2->setTag(6);//タグ付け
         this->addChild(_text2,2);
@@ -284,7 +283,7 @@ bool StageScene::onTouchBegan(Touch* pTouch, Event* pEvent){
         this->addChild(_crystal,0);
         
         // クリスタルパワー
-        auto _crystalValue = Label::createWithSystemFont(StringUtils::toString(_crystalPower3),"fonts/ヒラギノ明朝 ProN W3.ttc",30);
+        auto _crystalValue = Label::createWithSystemFont(StringUtils::toString(_crystalPower3),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
         _crystalValue->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
         _crystalValue->setTag(8);
         this->addChild(_crystalValue,2);
@@ -313,7 +312,7 @@ bool StageScene::onTouchBegan(Touch* pTouch, Event* pEvent){
         _character8->setTag(17);
         this->addChild(_character8,1);// 画面描画
         
-        auto _text2 = Label::createWithSystemFont("ミラのジャンプ攻撃。\nクリスタルがミラに力を与える▼", "fonts/ヒラギノ明朝 ProN W3.ttc",18);
+        auto _text2 = Label::createWithSystemFont("ミラのジャンプ攻撃。\nクリスタルがミラに力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",18);
         _text2->setPosition(Point(visibleSize.width / 2 + origin.x - 50, visibleSize.height / 2 + origin.y - 180));
         _text2->setTag(6);//タグ付け
         this->addChild(_text2,2);
@@ -327,7 +326,7 @@ bool StageScene::onTouchBegan(Touch* pTouch, Event* pEvent){
         this->addChild(_crystal,0);
         
         // クリスタルパワー
-        auto _crystalValue = Label::createWithSystemFont(StringUtils::toString(_crystalPower4),"fonts/ヒラギノ明朝 ProN W3.ttc",30);
+        auto _crystalValue = Label::createWithSystemFont(StringUtils::toString(_crystalPower4),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
         _crystalValue->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
         _crystalValue->setTag(8);
         this->addChild(_crystalValue,2);
@@ -398,8 +397,8 @@ void StageScene::update(float delta){
                 // 効果音再生
                 CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/crystal_sound.m4a");
                 
-                auto _text3 = Label::createWithSystemFont("ソダテンダーのランダムはりにひゃくほん。\nクリスタルがソダテンダーに力を与える▼", "fonts/ヒラギノ明朝 ProN W3.ttc",18);
-                _text3->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y - 180));
+                auto _text3 = Label::createWithSystemFont("ソダテンダーのランダムはりにひゃくほん。\nクリスタルがソダテンダーに力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",18);
+                _text3->setPosition(Point(visibleSize.width / 2 + origin.x - 50, visibleSize.height / 2 + origin.y - 180));
                 _text3->setTag(9);//タグ付け
                 this->addChild(_text3,2);
                 
@@ -412,7 +411,7 @@ void StageScene::update(float delta){
                 this->addChild(_enemyCrystal,0);
                 
                 // 敵のクリスタルパワー
-                auto _enemyCrystalValue = Label::createWithSystemFont(StringUtils::toString(_enemyCrystalPower),"fonts/ヒラギノ明朝 ProN W3.ttc",30);
+                auto _enemyCrystalValue = Label::createWithSystemFont(StringUtils::toString(_enemyCrystalPower),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
                 _enemyCrystalValue->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
                 _enemyCrystalValue->setTag(12);
                 this->addChild(_enemyCrystalValue,2);
@@ -540,8 +539,8 @@ void StageScene::update(float delta){
                 this->addChild(_character8,1);// 画面描画
                 
                 // 勝利メッセージ
-                auto _text6 = Label::createWithSystemFont("ソダテンダーをやっつけた！▼", "fonts/ヒラギノ明朝 ProN W3.ttc",18);
-                _text6->setPosition(Point(visibleSize.width / 2 + origin.x - 60, visibleSize.height / 2 + origin.y - 180));
+                auto _text6 = Label::createWithSystemFont("ソダテンダーをやっつけた！▼", "fonts/ヒラギノ明朝 ProN W6.ttc",18);
+                _text6->setPosition(Point(visibleSize.width / 2 + origin.x - 50, visibleSize.height / 2 + origin.y - 180));
                 this->addChild(_text6,2);
                 
                 // PlayerWin画像
@@ -636,8 +635,8 @@ void StageScene::update(float delta){
                 this->addChild(_character8,1);// 画面描画
                 
                 // 敗北メッセージ
-                auto _text6 = Label::createWithSystemFont("やられちゃった…(´；ω；`)▼", "fonts/ヒラギノ明朝 ProN W3.ttc",18);
-                _text6->setPosition(Point(visibleSize.width / 2 + origin.x - 60, visibleSize.height / 2 + origin.y - 180));
+                auto _text6 = Label::createWithSystemFont("やられちゃった…", "fonts/ヒラギノ明朝 ProN W6.ttc",18);
+                _text6->setPosition(Point(visibleSize.width / 2 + origin.x - 30, visibleSize.height / 2 + origin.y - 180));
                 this->addChild(_text6,2);
                 
                 // PlayerLose画像
@@ -749,7 +748,7 @@ int StageScene::playerPredefense(){
     // 敵の攻撃を避けれるか
     if(r == 1){
         _preemptive_attack = true; // 先制攻撃フラグをtrueにする
-        auto _text4 = Label::createWithSystemFont("味方たちは敵の攻撃を避けた！", "fonts/ヒラギノ明朝 ProN W3.ttc", 48);
+        auto _text4 = Label::createWithSystemFont("味方たちは敵の攻撃を避けた！", "fonts/ヒラギノ明朝 ProN W6.ttc", 14);
         _text4->setPosition(Point(300, 200));
         this->addChild(_text4,1);
     }
@@ -771,7 +770,7 @@ int StageScene::enemyPreemptiveAttack(){
     // 先制攻撃するか？
     if(r == 1){
         _preemptive_attack = true; // 先制攻撃フラグをtrueにする
-        auto _text5 = Label::createWithSystemFont("ソダテンダーは針を100本飛ばしてきた！", "fonts/ヒラギノ明朝 ProN W3.ttc", 48);
+        auto _text5 = Label::createWithSystemFont("ソダテンダーは針を100本飛ばしてきた！", "fonts/ヒラギノ明朝 ProN W6.ttc", 14);
         _text5->setPosition(Point(300, 200));
         this->addChild(_text5,1);
     }

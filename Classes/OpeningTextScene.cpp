@@ -101,6 +101,6 @@ void OpeningText::nextSceneCallback(Ref* pSender){
     // BGMの停止
     CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
     
-    // replaceSceneで画面遷移を行う Openingを破棄して0.5秒かけてホワイトアウトしてStageConvasationに遷移する
+    // replaceSceneで画面遷移を行う Openingを破棄して0.7秒かけてホワイトアウトしてStageConvasationに遷移する
     Director::getInstance()->replaceScene(TransitionFade::create(0.7,StageConversation::createScene()));
 }

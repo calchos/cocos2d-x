@@ -145,7 +145,7 @@ bool StageConversation::onTouchBegan(Touch* pTouch, Event* pEvent){
     _text1->setVisible(false);
 
     // テキストの内容
-    auto _text2 = Label::createWithTTF("チョコっと「えっ？あっ！なにあのサボテンみたいなの！？\nよーし！みんなであのサボテンさんをチョコっと\nやっつけちゃおう！」\n","fonts/ヒラギノ明朝 ProN W6.ttc", 14);
+    auto _text2 = Label::createWithTTF("チョコっと「えっ？あっ！なにあのサボテンみたいなの！？\nよーし！みんなであのサボテンさんをチョコっと\nやっつけちゃおう！」\n","fonts/ヒラギノ明朝 ProN W6.ttc", 15);
     // テキストの位置指定
     _text2->setPosition(Vec2(visibleSize.width / 2  , visibleSize.height / 4 - 60));
     // テキストの文字色指定
@@ -180,12 +180,13 @@ bool StageConversation::onTouchBegan(Touch* pTouch, Event* pEvent){
     // チョコさん向き反転
     _character1->setFlippedX(false);// スプライトの向き反転
 
+    
     // MenuItemImageでメニューボタン追加 引数にはボタンを押した時の動作を指定
-     auto nextButton = MenuItemImage::create("res/next.png","res/next_pushed.png",CC_CALLBACK_1(StageConversation::nextSceneCallback, this));
-     nextButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 4 - 120));// ボタンの位置を画面中央に指定
-     auto menu = Menu::create(nextButton, NULL);//
-     menu->setPosition(Vec2::ZERO);
-     this->addChild(menu, 1, 0);
+     auto _nextButton = MenuItemImage::create("res/conversation_button.png","res/conversation_button_pushed.png",CC_CALLBACK_1(StageConversation::nextSceneCallback, this));
+     _nextButton->setPosition(Vec2(visibleSize.width / 2 , visibleSize.height / 4 - 120));// ボタンの位置を画面中央に指定
+     auto _menu = Menu::create(_nextButton, NULL);//
+     _menu->setPosition(Vec2::ZERO);
+     this->addChild(_menu, 1, 0);
     
      
     
@@ -214,6 +215,6 @@ void StageConversation::nextSceneCallback(Ref* pSender){
     // BGMの停止
     CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
     
-    // replaceSceneで画面遷移を行う StageConversationを破棄して0.5秒かけてホワイトアウトしてStageに遷移する
+    // replaceSceneで画面遷移を行う StageConversationを破棄、0.5秒かけてホワイトアウトしてStageSceneに遷移する
     Director::getInstance()->replaceScene(TransitionRotoZoom::create(0.5,StageScene::createScene()));
 }
