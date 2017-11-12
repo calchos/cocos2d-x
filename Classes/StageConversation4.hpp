@@ -22,6 +22,7 @@ public:
     // タッチ処理
     virtual bool onTouchBegan(cocos2d::Touch* pTouch, cocos2d::Event* pEvent);// タップしたときに1回だけ実行する処理
     
+    
     // implement the "static create()" method manually インターフェース
     CREATE_FUNC(StageConversation4);
     

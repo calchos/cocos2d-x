@@ -105,8 +105,8 @@ bool StageScene2::init()
     
     
     // 敵出現テキスト
-    auto _text1 = Label::createWithSystemFont("マンドラ先輩があらわれた！▼", "fonts/ヒラギノ明朝 ProN W6.ttc",18);
-    _text1->setPosition(Point(visibleSize.width / 2 + origin.x - 60, visibleSize.height / 2 + origin.y - 180));
+    auto _text1 = Label::createWithTTF("マンドラ先輩があらわれた！▼", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+    _text1->setPosition(Point(visibleSize.width / 2 + origin.x - 80, visibleSize.height / 2 + origin.y - 180));
     _text1->setTag(5);// text1をタグ指定
     this->addChild(_text1,2);
     
@@ -182,21 +182,21 @@ bool StageScene2::onTouchBegan(Touch* pTouch, Event* pEvent){
         _character5->setTag(14);
         this->addChild(_character5,1);// 画面描画
         
-        auto _text2 = Label::createWithSystemFont("チョコっとの武器攻撃。\nクリスタルがチョコっとに力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",18);
-        _text2->setPosition(Point(visibleSize.width / 2 + origin.x - 30, visibleSize.height / 2 + origin.y - 180));
+        auto _text2 = Label::createWithTTF("チョコっとの武器攻撃。\nクリスタルがチョコっとに力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+        _text2->setPosition(Point(visibleSize.width / 2 + origin.x - 70, visibleSize.height / 2 + origin.y - 180));
         _text2->setTag(6);
         this->addChild(_text2,2);
         
         
         // クリスタル画像
         auto _crystal = Sprite::create("res/crystal_light.png");
-        _crystal->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
+        _crystal->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 155));
         _crystal->setScale(1.5f);
         _crystal->setTag(7);
         this->addChild(_crystal,0);
         
         // クリスタルパワー
-        auto _crystalValue = Label::createWithSystemFont(StringUtils::toString(_crystalPower1),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
+        auto _crystalValue = Label::createWithTTF(StringUtils::toString(_crystalPower1),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
         _crystalValue->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
         _crystalValue->setTag(8);
         this->addChild(_crystalValue,2);
@@ -225,21 +225,21 @@ bool StageScene2::onTouchBegan(Touch* pTouch, Event* pEvent){
         _character6->setTag(15);
         this->addChild(_character6,1);// 画面描画
         
-        auto _text2 = Label::createWithSystemFont("真紅の歌う攻撃。\nクリスタルが真紅に力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",18);
-        _text2->setPosition(Point(visibleSize.width / 2 + origin.x - 50, visibleSize.height / 2 + origin.y - 180));
+        auto _text2 = Label::createWithTTF("真紅の歌う攻撃。\nクリスタルが真紅に力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+        _text2->setPosition(Point(visibleSize.width / 2 + origin.x - 70, visibleSize.height / 2 + origin.y - 180));
         _text2->setTag(6);
         this->addChild(_text2,2);
         
         
         // クリスタル画像
         auto _crystal = Sprite::create("res/crystal_fire.png");
-        _crystal->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
+        _crystal->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 155));
         _crystal->setScale(1.5f);
         _crystal->setTag(7);
         this->addChild(_crystal,0);
         
         // クリスタルパワー
-        auto _crystalValue = Label::createWithSystemFont(StringUtils::toString(_crystalPower2),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
+        auto _crystalValue = Label::createWithTTF(StringUtils::toString(_crystalPower2),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
         _crystalValue->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
         _crystalValue->setTag(8);
         this->addChild(_crystalValue,2);
@@ -269,21 +269,21 @@ bool StageScene2::onTouchBegan(Touch* pTouch, Event* pEvent){
         _character7->setTag(16);
         this->addChild(_character7,1);// 画面描画
         
-        auto _text2 = Label::createWithSystemFont("しーやの魔法攻撃。\nクリスタルがしーやに力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",18);
-        _text2->setPosition(Point(visibleSize.width / 2 + origin.x - 50, visibleSize.height / 2 + origin.y - 180));
+        auto _text2 = Label::createWithTTF("しーやの魔法攻撃。\nクリスタルがしーやに力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+        _text2->setPosition(Point(visibleSize.width / 2 + origin.x - 70, visibleSize.height / 2 + origin.y - 180));
         _text2->setTag(6);//タグ付け
         this->addChild(_text2,2);
         
         
         // クリスタル画像
         auto _crystal = Sprite::create("res/crystal_water.png");
-        _crystal->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
+        _crystal->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 155));
         _crystal->setScale(1.5f);
         _crystal->setTag(7);
         this->addChild(_crystal,0);
         
         // クリスタルパワー
-        auto _crystalValue = Label::createWithSystemFont(StringUtils::toString(_crystalPower3),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
+        auto _crystalValue = Label::createWithTTF(StringUtils::toString(_crystalPower3),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
         _crystalValue->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
         _crystalValue->setTag(8);
         this->addChild(_crystalValue,2);
@@ -312,21 +312,21 @@ bool StageScene2::onTouchBegan(Touch* pTouch, Event* pEvent){
         _character8->setTag(17);
         this->addChild(_character8,1);// 画面描画
         
-        auto _text2 = Label::createWithSystemFont("ミラのジャンプ攻撃。\nクリスタルがミラに力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",18);
-        _text2->setPosition(Point(visibleSize.width / 2 + origin.x - 50, visibleSize.height / 2 + origin.y - 180));
+        auto _text2 = Label::createWithTTF("ミラのジャンプ攻撃。\nクリスタルがミラに力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+        _text2->setPosition(Point(visibleSize.width / 2 + origin.x - 70, visibleSize.height / 2 + origin.y - 180));
         _text2->setTag(6);//タグ付け
         this->addChild(_text2,2);
         
         
         // クリスタル画像
         auto _crystal = Sprite::create("res/crystal_earth.png");
-        _crystal->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
+        _crystal->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 155));
         _crystal->setScale(1.5f);
         _crystal->setTag(7);
         this->addChild(_crystal,0);
         
         // クリスタルパワー
-        auto _crystalValue = Label::createWithSystemFont(StringUtils::toString(_crystalPower4),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
+        auto _crystalValue = Label::createWithTTF(StringUtils::toString(_crystalPower4),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
         _crystalValue->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
         _crystalValue->setTag(8);
         this->addChild(_crystalValue,2);
@@ -336,8 +336,8 @@ bool StageScene2::onTouchBegan(Touch* pTouch, Event* pEvent){
         
     }
     
-    // 2.0秒後にintervalDeleteActionメソッドを呼ぶ
-    this->scheduleOnce(schedule_selector(StageScene2::intervalDeleteAction),2.0f);
+    // 1秒後にintervalDeleteActionメソッドを呼ぶ
+    this->scheduleOnce(schedule_selector(StageScene2::intervalDeleteAction),1.0f);
     
     // 更新メソッド定期呼び出し
     this->scheduleUpdate();
@@ -377,14 +377,8 @@ void StageScene2::update(float delta){
         // 敵1がまだ攻撃していないとき
         if(!_enemy1->_doAttack){
             
-            // 敵の先制攻撃処理呼び出し
-            _preemptive_attack = enemyPreemptiveAttack();
-            
-            
-            if(_preemptive_attack == true){
-                // 攻撃フラグをtrueにする
-                _enemy1->_doAttack = true;
-            }
+            // 攻撃フラグをtrueにする
+             _enemy1->_doAttack = true;
             
             // 2秒後にラムダ式を実行
             this->runAction(Sequence::create(DelayTime::create(2),CallFunc::create([this](){
@@ -397,28 +391,24 @@ void StageScene2::update(float delta){
                 // 効果音再生
                 CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/crystal_sound.m4a");
                 
-                auto _text3 = Label::createWithSystemFont("マンドラ先輩の絶死の叫び。\nクリスタルがマンドラ先輩に力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",18);
-                _text3->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y - 180));
+                auto _text3 = Label::createWithTTF("マンドラ先輩の悲痛な叫び。\nクリスタルがマンドラ先輩に力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+                _text3->setPosition(Point(visibleSize.width / 2 + origin.x - 60, visibleSize.height / 2 + origin.y - 180));
                 _text3->setTag(9);//タグ付け
                 this->addChild(_text3,2);
                 
                 
                 // クリスタル画像
                 auto _enemyCrystal = Sprite::create("res/crystal_wind.png");
-                _enemyCrystal->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
+                _enemyCrystal->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 155));
                 _enemyCrystal->setScale(1.5f);
                 _enemyCrystal->setTag(11);
                 this->addChild(_enemyCrystal,0);
                 
                 // 敵のクリスタルパワー
-                auto _enemyCrystalValue = Label::createWithSystemFont(StringUtils::toString(_enemyCrystalPower),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
+                auto _enemyCrystalValue = Label::createWithTTF(StringUtils::toString(_enemyCrystalPower),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
                 _enemyCrystalValue->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
                 _enemyCrystalValue->setTag(12);
                 this->addChild(_enemyCrystalValue,2);
-                
-                log("敵のクリスタル力");
-                log("%i",_enemyCrystalPower);
-                
                 
                 
             }), NULL));
@@ -427,28 +417,9 @@ void StageScene2::update(float delta){
             // プレイヤーのトータルクリスタル数値計算処理
             int _totalCrystalPower = playerAttack();
             
-            // プレイヤーのトータルクリスタル数値が200より大きい時
-            /*
-             if(_totalCrystalPower >= 200){
-             
-             // 通常合体技発動！
-             auto _text7 = Label::createWithSystemFont("クリスタルの力により合体技：龍光劔発動！▼", "fonts/ヒラギノ明朝 ProN W3.ttc",18);
-             _text7->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y - 180));
-             _text7->setTag(10);//タグ付け
-             this->addChild(_text7,2);
-             
-             }
-             */
-            
-            log("プレイヤーの総合クリスタルパワー");
-            log("%i",_totalCrystalPower);
             // 敵のトータルクリスタル数値計算処理
             int _totalEnemyCrystalPower = enemyAttack();
-            // デバッグログ
-            log("敵の総合クリスタルパワー");
-            log("%i",_totalEnemyCrystalPower);
-            
-            
+
             // 味方のクリスタル数値合計が敵より大きければ勝利イベントに遷移
             if(_totalCrystalPower > _totalEnemyCrystalPower){
                 _state = TYPE_WIN;
@@ -539,8 +510,8 @@ void StageScene2::update(float delta){
                 this->addChild(_character8,1);// 画面描画
                 
                 // 勝利メッセージ
-                auto _text6 = Label::createWithSystemFont("マンドラ先輩をやっつけた！▼", "fonts/ヒラギノ明朝 ProN W6.ttc",18);
-                _text6->setPosition(Point(visibleSize.width / 2 + origin.x - 60, visibleSize.height / 2 + origin.y - 180));
+                auto _text6 = Label::createWithTTF("マンドラ先輩をやっつけた！▼", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+                _text6->setPosition(Point(visibleSize.width / 2 + origin.x - 80, visibleSize.height / 2 + origin.y - 180));
                 this->addChild(_text6,2);
                 
                 // PlayerWin画像
@@ -635,8 +606,8 @@ void StageScene2::update(float delta){
                 this->addChild(_character8,1);// 画面描画
                 
                 // 敗北メッセージ
-                auto _text6 = Label::createWithSystemFont("やられちゃった…", "fonts/ヒラギノ明朝 ProN W6.ttc",18);
-                _text6->setPosition(Point(visibleSize.width / 2 + origin.x - 60, visibleSize.height / 2 + origin.y - 180));
+                auto _text6 = Label::createWithTTF("やられちゃった…", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+                _text6->setPosition(Point(visibleSize.width / 2 + origin.x - 100, visibleSize.height / 2 + origin.y - 180));
                 this->addChild(_text6,2);
                 
                 // PlayerLose画像
@@ -719,7 +690,7 @@ int StageScene2::enemyAttack(){
     // 乱数初期化
     srand((unsigned int)time(NULL));
     int m = 0;// 乱数用変数の初期値
-    _enemyCrystalPower = rand()%(m+299);
+    _enemyCrystalPower = rand()%(m+200);
     
     int _enemyCrystalValueArray[] = {_enemyCrystalPower};// クリスタル値を配列に格納する
     int _enemyCrystalPowers = 0;
@@ -734,48 +705,4 @@ int StageScene2::enemyAttack(){
     }
     
     return _enemyCrystalPowers;
-}
-
-// 先制防御
-int StageScene2::playerPredefense(){
-    
-    // 乱数初期化
-    srand((unsigned int)time(NULL));
-    
-    int m = 0;// 乱数用変数の初期値
-    int r = rand()%(m+1); // 0～1の乱数を発生させrに代入
-    
-    // 敵の攻撃を避けれるか
-    if(r == 1){
-        _preemptive_attack = true; // 先制攻撃フラグをtrueにする
-        auto _text4 = Label::createWithSystemFont("味方たちは敵の攻撃を避けた！", "fonts/ヒラギノ明朝 ProN W6.ttc", 48);
-        _text4->setPosition(Point(300, 200));
-        this->addChild(_text4,1);
-    }
-    
-    return 0;
-    
-}
-
-
-// 敵キャラクターの先制攻撃処理
-int StageScene2::enemyPreemptiveAttack(){
-    
-    // 乱数初期化
-    srand((unsigned int)time(NULL));
-    
-    int m = 0;// 乱数用変数の初期値
-    int r = rand()%(m+1); // 0～1の乱数を発生させrに代入
-    
-    // 先制攻撃するか？
-    if(r == 1){
-        _preemptive_attack = true; // 先制攻撃フラグをtrueにする
-        auto _text5 = Label::createWithSystemFont("マンドラ先輩の絶死の叫び！", "fonts/ヒラギノ明朝 ProN W6.ttc", 48);
-        _text5->setPosition(Point(300, 200));
-        this->addChild(_text5,1);
-    }
-    
-    return 0;
-    
-    
 }

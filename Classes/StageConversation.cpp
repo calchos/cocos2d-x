@@ -50,9 +50,10 @@ bool StageConversation::init() // 初期化処理
     
     
     // テキストの内容
-    auto _text1 = Label::createWithTTF("チョコっと「あれぇ〜？ここどこだろう？」\nミラ「チョコちゃんﾉｼ」\nチョコっと「あっ！ミラさんだ！」\n真紅「あれ？ここどこだろう？夢ノ国なのかしら？」\nチョコっと「あっ！真紅さんにしーちゃんだ！！」\nしーや「チョコちゃんうしろ！うしろ！」⬇\n","fonts/ヒラギノ明朝 ProN W6.ttc", 14);
+    auto _text1 = Label::createWithTTF("チョコっと「あれぇ〜？ここどこだろう？」\nミラ「チョコちゃんﾉｼ」\nチョコっと「あっ！ミラさんだ！」\n真紅「あれ？ここどこだろう？夢ノ国なのかしら？」\nチョコっと「あっ！真紅さんにしーちゃんだ！！」\nしーや「チョコちゃんうしろ！うしろ！」⬇\n","fonts/ヒラギノ明朝 ProN W6.ttc",14);
+    
     // テキストの位置指定
-    _text1->setPosition(Vec2(visibleSize.width / 2 - 27, visibleSize.height / 4 - 88));
+    _text1->setPosition(Vec2(visibleSize.width / 2 - 17, visibleSize.height / 4 - 87));
     // テキストの文字色指定
     _text1->setColor(Color3B::WHITE);
     _text1->setOpacity(0);// テキストの透明化
@@ -145,9 +146,9 @@ bool StageConversation::onTouchBegan(Touch* pTouch, Event* pEvent){
     _text1->setVisible(false);
 
     // テキストの内容
-    auto _text2 = Label::createWithTTF("チョコっと「えっ？あっ！なにあのサボテンみたいなの！？\nよーし！みんなであのサボテンさんをチョコっと\nやっつけちゃおう！」\n","fonts/ヒラギノ明朝 ProN W6.ttc", 15);
+    auto _text2 = Label::createWithTTF("チョコっと「えっ？なにあのサボテンみたいなの！？\nよーし！みんなであのサボテンさんをチョコっと\nやっつけちゃおう！」\n","fonts/ヒラギノ明朝 ProN W6.ttc", 14);
     // テキストの位置指定
-    _text2->setPosition(Vec2(visibleSize.width / 2  , visibleSize.height / 4 - 60));
+    _text2->setPosition(Vec2(visibleSize.width / 2 - 10, visibleSize.height / 4 - 60));
     // テキストの文字色指定
     _text2->setColor(Color3B::WHITE);
     _text2->setOpacity(0);// テキストの透明化
@@ -182,13 +183,27 @@ bool StageConversation::onTouchBegan(Touch* pTouch, Event* pEvent){
 
     
     // MenuItemImageでメニューボタン追加 引数にはボタンを押した時の動作を指定
-     auto _nextButton = MenuItemImage::create("res/conversation_button.png","res/conversation_button_pushed.png",CC_CALLBACK_1(StageConversation::nextSceneCallback, this));
-     _nextButton->setPosition(Vec2(visibleSize.width / 2 , visibleSize.height / 4 - 120));// ボタンの位置を画面中央に指定
+     auto _nextButton = MenuItemImage::create("res/skip_button.png","res/skip_button_pushed.png",CC_CALLBACK_1(StageConversation::nextSceneCallback, this));
+     _nextButton->setPosition(Vec2(visibleSize.width / 2 + 150 , visibleSize.height / 4 - 120));// ボタンの位置を画面中央に指定
      auto _menu = Menu::create(_nextButton, NULL);//
      _menu->setPosition(Vec2::ZERO);
      this->addChild(_menu, 1, 0);
     
-     
+    // 12秒後にステージ1に遷移する
+    this->runAction(Sequence::create(DelayTime::create(12),CallFunc::create([this](){
+        
+        // 効果音再生
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/battle_encount.m4a");
+        
+        // BGMの停止
+        CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+        
+        // replaceSceneで画面遷移を行う StageConversationを破棄、0.5秒かけてホワイトアウトしてStageSceneに遷移する
+        Director::getInstance()->replaceScene(TransitionRotoZoom::create(0.5,StageScene::createScene()));
+        
+        
+    }), NULL));
+    
     
     // エネミー1
     _enemy1 = BaseChara::create("res/cactuar.png");

@@ -1,6 +1,6 @@
 #pragma execution_character_set("utf-8") // 文字コード指定
 #include "StageConversation4.hpp"
-// #include "StageConversation5.hpp"
+#include "StageConversation5.hpp"
 #include "StageScene.h"
 #include "SimpleAudioEngine.h"
 
@@ -51,7 +51,7 @@ bool StageConversation4::init() // 初期化処理
     
     
     // テキストの内容
-    auto _text1 = Label::createWithTTF("マンドラ先輩「ドゥラァァァァァァァァァァァフゥ！！」\nチョコっと「マンドラ先輩やっつけた！」\nミラ「チョコちゃんちょっといい？」\nチョコっと「え？なになに？」","fonts/ヒラギノ明朝 ProN W6.ttc", 15);
+    auto _text1 = Label::createWithTTF("マンドラ先輩「ドゥラァァァァァァァァァァァフゥ！！」\nチョコっと「マンドラ先輩やっつけた！」\nミラ「チョコちゃんちょっといい？」\nチョコっと「え？なになに？」","fonts/ヒラギノ明朝 ProN W6.ttc", 14);
     // テキストの位置指定
     _text1->setPosition(Vec2(visibleSize.width / 2 , visibleSize.height / 4 - 65));
     // テキストの文字色指定
@@ -154,13 +154,13 @@ bool StageConversation4::onTouchBegan(Touch* pTouch, Event* pEvent){
     _text1->setVisible(false);
     
     // テキストの内容
-    auto _text2 = Label::createWithTTF("チョコっと「え？ミラさんマンドラ先輩食べちゃった…」\nミラ「うん。マンドラ先輩美味しいよ！」\n真紅・しーや「・・・。あ！異界の扉！！」\nチョコっと「じゃあ！みんな行こうか…。」\nミラ「ノシ」","fonts/ヒラギノ明朝 ProN W6.ttc", 15);
+    auto _text2 = Label::createWithTTF("チョコっと「え？ミラさんマンドラ先輩食べちゃった…」\nミラ「うん。マンドラ先輩美味しいよ！」\n真紅・しーや「・・・。あ！異界の扉！！」\nチョコっと「じゃあ！みんな行こうか…。」\nミラ「ノシ」","fonts/ヒラギノ明朝 ProN W6.ttc", 14);
     // テキストの位置指定
     _text2->setPosition(Vec2(visibleSize.width / 2 , visibleSize.height / 4 - 65));
     // テキストの文字色指定
     _text2->setColor(Color3B::WHITE);
     _text2->setOpacity(0);// テキストの透明化
-    _text2->setTag(1);//タグ指定
+    _text2->setTag(3);//タグ指定
     this->addChild(_text2,2);// テキストを表示
     
     // テキストの透明化解除
@@ -184,7 +184,6 @@ bool StageConversation4::onTouchBegan(Touch* pTouch, Event* pEvent){
         if(_text2->getLetter(i) != nullptr){
             _text2->getLetter(i)->runAction(seq);
         }
-        
     }
     
     // チョコさん通常ポーズに変更
@@ -197,25 +196,25 @@ bool StageConversation4::onTouchBegan(Touch* pTouch, Event* pEvent){
     this->addChild(_character1,1);// 画面描画
     
     // ミラさん移動
-    _character4->runAction(MoveTo::create(2.0f,Vec2(origin.x + visibleSize.height / 2 + 35, origin.y + visibleSize.height / 2 + 50)));
+    _character4->runAction(MoveTo::create(2.0f,Vec2(origin.x + visibleSize.height / 2 + 130, origin.y + visibleSize.height / 2 + 50)));
     
-    // 2秒後にマンドラ先輩ミラさんに食べられて消滅ｗ＼(^o^)／
-    this->runAction(Sequence::create(DelayTime::create(2),CallFunc::create([this](){
+    // 3秒後にマンドラ先輩ミラさんに食べられて消滅ｗ＼(^o^)／
+    this->runAction(Sequence::create(DelayTime::create(3),CallFunc::create([this](){
         
         _enemy1->setVisible(false);
         
     }), NULL));
     
-    // 2.5秒後にミラさんみんなの方を向くo(*･ω･)ﾉ
-    this->runAction(Sequence::create(DelayTime::create(2),CallFunc::create([this](){
+    // 3.5秒後にミラさんみんなの方を向くo(*･ω･)ﾉ
+    this->runAction(Sequence::create(DelayTime::create(3.5),CallFunc::create([this](){
     
         // ミラさん向き反転
         _character4->setFlippedX(true);// スプライトの向き反転
     
     }), NULL));
     
-    // 5秒後に異界の扉出現
-    this->runAction(Sequence::create(DelayTime::create(5),CallFunc::create([this](){
+    // 10秒後に異界の扉出現
+    this->runAction(Sequence::create(DelayTime::create(10),CallFunc::create([this](){
         
         auto visibleSize = Director::getInstance()->getVisibleSize();
         Point origin = Director::getInstance()->getVisibleOrigin();
@@ -232,23 +231,21 @@ bool StageConversation4::onTouchBegan(Touch* pTouch, Event* pEvent){
     }), NULL));
     
     
-    // 15秒後にボタン表示
-    this->runAction(Sequence::create(DelayTime::create(15),CallFunc::create([this](){
-        
+    // 20秒後にボタン表示
+    this->runAction(Sequence::create(DelayTime::create(20),CallFunc::create([this](){
+    
         auto visibleSize = Director::getInstance()->getVisibleSize();
         Point origin = Director::getInstance()->getVisibleOrigin();
         
         Director::getInstance()->setDisplayStats(false); // stats OFF*
         
-        // テキストタグ呼び出し
-        auto _text2 = this->getChildByTag(1);
-        
         // ウィンドウタグ呼び出し
         auto _window = this->getChildByTag(2);
-        
-        _text2->setVisible(false);
         _window->setVisible(false);
         
+        // テキスト2呼び出し
+        auto _text2 = this->getChildByTag(3);
+        _text2->setVisible(false);
         
         // BGMの停止
         CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
@@ -270,14 +267,6 @@ bool StageConversation4::onTouchBegan(Touch* pTouch, Event* pEvent){
         
     }), NULL));
     
-    
-    // 異界の扉
-    auto _door = Sprite::create("res/the_next_world_door.png");
-    _door->setPosition(Point(visibleSize.width / 2  - 200 + origin.x, visibleSize.height / 2 + origin.y - 30));
-    _door->setScale(2.5);
-    this->addChild(_door,1);
-    
-
     // 背景
     auto background = Sprite::create("res/dream_world_forest.png");
     background->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
@@ -290,12 +279,12 @@ bool StageConversation4::onTouchBegan(Touch* pTouch, Event* pEvent){
 void StageConversation4::nextSceneCallback(Ref* pSender){
     
     // 効果音再生
-    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/battle_encount.m4a");
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/button_push.m4a");
     
     // BGMの停止
     CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
     
-    // replaceSceneで画面遷移を行う StageConversationを破棄して0.5秒かけてホワイトアウトしてStageに遷移する
-    // Director::getInstance()->replaceScene(TransitionRotoZoom::create(0.5,StageConversation5::createScene()));
+    // replaceSceneで画面遷移を行う StageConversationを破棄して0.5秒かけてホワイトアウトしてStageConversation5に遷移する
+    Director::getInstance()->replaceScene(TransitionFade::create(0.5,StageConversation5::createScene()));
 }
 

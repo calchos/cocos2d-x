@@ -42,17 +42,22 @@
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		5400BD191ED06EC10082C107 /* BaseChara.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5400BD171ED06EC10082C107 /* BaseChara.cpp */; };
 		5409C04F1EFC1FF300719222 /* OpeningTextScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5409C04D1EFC1FF300719222 /* OpeningTextScene.cpp */; };
+		54208B3A1FB21D61003DF7CC /* StageConversation7.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54208B361FB21D60003DF7CC /* StageConversation7.cpp */; };
 		542557D71FA49A37000301E4 /* StageConversation4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 542557D61FA49A37000301E4 /* StageConversation4.cpp */; };
 		542A900B1EFFD996009C5062 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 542A900A1EFFD996009C5062 /* Images.xcassets */; };
 		54330C461EF661FB00B1B93B /* SplashScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54330C451EF661FB00B1B93B /* SplashScene.cpp */; };
 		543C1D151F1CCAEA001C31BB /* StageScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 543C1D141F1CCAEA001C31BB /* StageScene.cpp */; };
+		543D4FB01FA8E19F00356477 /* StageScene3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 543D4FAC1FA8E19F00356477 /* StageScene3.cpp */; };
 		54480F791F15347E00616F7C /* StageConversation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54480F771F15347E00616F7C /* StageConversation.cpp */; };
 		5479F4781F9F9B7F002AC57E /* StageConversation2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5479F4741F9F9B7F002AC57E /* StageConversation2.cpp */; };
 		547ED7F81FA0E2B5007973E8 /* StageConversation3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 547ED7F51FA0E2B4007973E8 /* StageConversation3.cpp */; };
 		547ED7FC1FA0E826007973E8 /* StageScene2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 547ED7FB1FA0E826007973E8 /* StageScene2.cpp */; };
 		548D99721F1D21A80048D6BE /* splash_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 548D99711F1D21A80048D6BE /* splash_image.png */; };
+		549201FD1FA7905B00132AB2 /* StageConversation5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 549201FC1FA7905B00132AB2 /* StageConversation5.cpp */; };
 		549D7A141EFADC15001771EF /* music in Resources */ = {isa = PBXBuildFile; fileRef = 549D7A131EFADC15001771EF /* music */; };
 		54B1EAA11EF02B8E008202F2 /* OpeningTitle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54B1EAA01EF02B8E008202F2 /* OpeningTitle.cpp */; };
+		54B6E66F1FB0AA5C00FDA072 /* StageConversation6.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54B6E66B1FB0AA5B00FDA072 /* StageConversation6.cpp */; };
+		54E353511FB368C7003A3880 /* StageScene4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54E353501FB368C7003A3880 /* StageScene4.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -148,6 +153,8 @@
 		5400BD1C1ED190CD0082C107 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		5409C04D1EFC1FF300719222 /* OpeningTextScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpeningTextScene.cpp; sourceTree = "<group>"; };
 		5409C04E1EFC1FF300719222 /* OpeningTextScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OpeningTextScene.hpp; sourceTree = "<group>"; };
+		54208B361FB21D60003DF7CC /* StageConversation7.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StageConversation7.cpp; sourceTree = "<group>"; };
+		54208B391FB21D61003DF7CC /* StageConversation7.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StageConversation7.hpp; sourceTree = "<group>"; };
 		542557D31FA49A37000301E4 /* StageConversation4.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StageConversation4.hpp; sourceTree = "<group>"; };
 		542557D61FA49A37000301E4 /* StageConversation4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StageConversation4.cpp; sourceTree = "<group>"; };
 		542A900A1EFFD996009C5062 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "test-mobile/Images.xcassets"; sourceTree = SOURCE_ROOT; };
@@ -156,6 +163,8 @@
 		54330C491EF6913800B1B93B /* SplashScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SplashScene.h; sourceTree = "<group>"; };
 		543C1D141F1CCAEA001C31BB /* StageScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StageScene.cpp; sourceTree = "<group>"; };
 		543C1D161F1CCB2A001C31BB /* StageScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageScene.h; sourceTree = "<group>"; };
+		543D4FAC1FA8E19F00356477 /* StageScene3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StageScene3.cpp; sourceTree = "<group>"; };
+		543D4FAF1FA8E19F00356477 /* StageScene3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageScene3.h; sourceTree = "<group>"; };
 		54480F771F15347E00616F7C /* StageConversation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StageConversation.cpp; sourceTree = "<group>"; };
 		54480F781F15347E00616F7C /* StageConversation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StageConversation.hpp; sourceTree = "<group>"; };
 		5479F4741F9F9B7F002AC57E /* StageConversation2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StageConversation2.cpp; sourceTree = "<group>"; };
@@ -165,11 +174,17 @@
 		547ED7FA1FA0E825007973E8 /* StageScene2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageScene2.h; sourceTree = "<group>"; };
 		547ED7FB1FA0E826007973E8 /* StageScene2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StageScene2.cpp; sourceTree = "<group>"; };
 		548D99711F1D21A80048D6BE /* splash_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_image.png; sourceTree = "<group>"; };
+		549201F91FA7905A00132AB2 /* StageConversation5.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StageConversation5.hpp; sourceTree = "<group>"; };
+		549201FC1FA7905B00132AB2 /* StageConversation5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StageConversation5.cpp; sourceTree = "<group>"; };
 		549D7A131EFADC15001771EF /* music */ = {isa = PBXFileReference; lastKnownFileType = folder; path = music; sourceTree = "<group>"; };
 		54AA3B491F128E3000E8A3DF /* test-desktop copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "test-desktop copy-Info.plist"; path = "/Users/naonobu/cocos_project/crystal_fade/proj.ios_mac/test-desktop copy-Info.plist"; sourceTree = "<absolute>"; };
 		54AA3B681F128E3800E8A3DF /* test-desktop copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "test-desktop copy2-Info.plist"; path = "/Users/naonobu/cocos_project/crystal_fade/proj.ios_mac/test-desktop copy2-Info.plist"; sourceTree = "<absolute>"; };
 		54B1EAA01EF02B8E008202F2 /* OpeningTitle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpeningTitle.cpp; sourceTree = "<group>"; };
+		54B6E66B1FB0AA5B00FDA072 /* StageConversation6.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StageConversation6.cpp; sourceTree = "<group>"; };
+		54B6E66E1FB0AA5B00FDA072 /* StageConversation6.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StageConversation6.hpp; sourceTree = "<group>"; };
 		54CAED281EF9717B00B87D9A /* BattleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleScene.h; sourceTree = "<group>"; };
+		54E3534D1FB368C6003A3880 /* StageScene4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageScene4.h; sourceTree = "<group>"; };
+		54E353501FB368C7003A3880 /* StageScene4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StageScene4.cpp; sourceTree = "<group>"; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -302,6 +317,16 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				54E353501FB368C7003A3880 /* StageScene4.cpp */,
+				54E3534D1FB368C6003A3880 /* StageScene4.h */,
+				54208B361FB21D60003DF7CC /* StageConversation7.cpp */,
+				54208B391FB21D61003DF7CC /* StageConversation7.hpp */,
+				54B6E66B1FB0AA5B00FDA072 /* StageConversation6.cpp */,
+				54B6E66E1FB0AA5B00FDA072 /* StageConversation6.hpp */,
+				543D4FAC1FA8E19F00356477 /* StageScene3.cpp */,
+				543D4FAF1FA8E19F00356477 /* StageScene3.h */,
+				549201FC1FA7905B00132AB2 /* StageConversation5.cpp */,
+				549201F91FA7905A00132AB2 /* StageConversation5.hpp */,
 				542557D61FA49A37000301E4 /* StageConversation4.cpp */,
 				542557D31FA49A37000301E4 /* StageConversation4.hpp */,
 				547ED7FB1FA0E826007973E8 /* StageScene2.cpp */,
@@ -502,12 +527,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54E353511FB368C7003A3880 /* StageScene4.cpp in Sources */,
 				5479F4781F9F9B7F002AC57E /* StageConversation2.cpp in Sources */,
 				547ED7F81FA0E2B5007973E8 /* StageConversation3.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				54330C461EF661FB00B1B93B /* SplashScene.cpp in Sources */,
 				54480F791F15347E00616F7C /* StageConversation.cpp in Sources */,
+				54B6E66F1FB0AA5C00FDA072 /* StageConversation6.cpp in Sources */,
+				543D4FB01FA8E19F00356477 /* StageScene3.cpp in Sources */,
+				549201FD1FA7905B00132AB2 /* StageConversation5.cpp in Sources */,
 				54B1EAA11EF02B8E008202F2 /* OpeningTitle.cpp in Sources */,
+				54208B3A1FB21D61003DF7CC /* StageConversation7.cpp in Sources */,
 				542557D71FA49A37000301E4 /* StageConversation4.cpp in Sources */,
 				5409C04F1EFC1FF300719222 /* OpeningTextScene.cpp in Sources */,
 				5400BD191ED06EC10082C107 /* BaseChara.cpp in Sources */,

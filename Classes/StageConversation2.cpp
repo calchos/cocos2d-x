@@ -168,8 +168,8 @@ bool StageConversation2::onTouchBegan(Touch* pTouch, Event* pEvent){
     
     Director::getInstance()->setDisplayStats(false); // stats OFF*
     
-    // 2秒後にボタン表示
-    this->runAction(Sequence::create(DelayTime::create(2),CallFunc::create([this](){
+    // 1秒後にボタン表示
+    this->runAction(Sequence::create(DelayTime::create(1),CallFunc::create([this](){
         
         auto visibleSize = Director::getInstance()->getVisibleSize();
         Point origin = Director::getInstance()->getVisibleOrigin();
@@ -222,7 +222,6 @@ bool StageConversation2::onTouchBegan(Touch* pTouch, Event* pEvent){
     _character1->setAnchorPoint(Vec2(1.0,1.0));// アンカーポイント指定
     _character1->setPosition(origin.x + 500, origin.y + visibleSize.height / 2 );// 位置指定
     _character1->setScale(2.0);// スプライトの拡大率を2.0倍に指定
-    _character1->runAction(MoveTo::create(2.0f,Vec2(origin.x - 30, origin.y + visibleSize.height / 2 )));
     this->addChild(_character1,2);// 画面描画
     
     // 真紅さん
@@ -230,7 +229,6 @@ bool StageConversation2::onTouchBegan(Touch* pTouch, Event* pEvent){
     _character2->setAnchorPoint(Vec2(1.0,1.0));
     _character2->setPosition(Vec2(origin.x + 580, origin.y + visibleSize.height / 2 - 45));
     _character2->setScale(2.0);
-    _character2->runAction(MoveTo::create(2.0f,Vec2(origin.x - 30, origin.y + visibleSize.height / 2)));
     this->addChild(_character2,2);
     
     
@@ -239,7 +237,6 @@ bool StageConversation2::onTouchBegan(Touch* pTouch, Event* pEvent){
     _character3->setAnchorPoint(Vec2(1.0,1.0));
     _character3->setPosition(Vec2(origin.x + 640, origin.y + visibleSize.height / 2 - 30));
     _character3->setScale(2.0);
-    _character3->runAction(MoveTo::create(2.0f,Vec2(origin.x - 30, origin.y + visibleSize.height / 2 )));
     this->addChild(_character3,2);
     
     
@@ -248,7 +245,6 @@ bool StageConversation2::onTouchBegan(Touch* pTouch, Event* pEvent){
     _character4->setAnchorPoint(Vec2(1.0,1.0));
     _character4->setPosition(Vec2(origin.x + 590, origin.y + visibleSize.height / 2 + 50));
     _character4->setScale(2.0);
-    _character4->runAction(MoveTo::create(2.0f,Vec2(origin.x - 30, origin.y + visibleSize.height / 2 )));
     this->addChild(_character4, 2);
     
     // 異界の扉

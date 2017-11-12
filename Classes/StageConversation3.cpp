@@ -50,7 +50,7 @@ bool StageConversation3::init() // 初期化処理
     
     
     // テキストの内容
-    auto _text1 = Label::createWithTTF("チョコっと「ここは夢ノ国の森の中かな？」\nしーや「チョコちゃん！マンドラ先輩がいるよ！」\nチョコっと「あっ！ほんとだ！マンドラ先輩だ！！」\nマンドラ先輩「おお〜、誰だお前ら！」\nチョコっと「え？私だよ！チョコっとだよ！」\nマンドラ先輩「ヒヨコ？ヒョットコだって！？」⬇\n","fonts/ヒラギノ明朝 ProN W6.ttc", 14);
+    auto _text1 = Label::createWithTTF("チョコっと「ここは夢ノ国の森の中かな？」\nしーや「チョコちゃん！マンドラ先輩がいるよ！」\nチョコっと「あっ！ほんとだ！マンドラ先輩だ！！」\nマンドラ先輩「おお〜、誰だお前ら！」\nチョコっと「え？私だよ！チョコっとだよ！」\nマンドラ先輩「チョコボ？ヒョットコだって！？」⬇\n","fonts/ヒラギノ明朝 ProN W6.ttc", 14);
     // テキストの位置指定
     _text1->setPosition(Vec2(visibleSize.width / 2 - 25, visibleSize.height / 4 - 88));
     // テキストの文字色指定
@@ -193,11 +193,26 @@ bool StageConversation3::onTouchBegan(Touch* pTouch, Event* pEvent){
     this->addChild(_character1,1);// 画面描画
     
     // MenuItemImageでメニューボタン追加 引数にはボタンを押した時の動作を指定
-    auto _nextButton = MenuItemImage::create("res/conversation_button.png","res/conversation_button_pushed.png",CC_CALLBACK_1(StageConversation3::nextSceneCallback, this));
-    _nextButton->setPosition(Vec2(visibleSize.width / 2 , visibleSize.height / 4 - 130));// ボタンの位置を画面中央に指定
+    auto _nextButton = MenuItemImage::create("res/skip_button.png","res/skip_button_pushed.png",CC_CALLBACK_1(StageConversation3::nextSceneCallback, this));
+    _nextButton->setPosition(Vec2(visibleSize.width / 2 + 150, visibleSize.height / 4 - 120));// ボタンの位置を画面中央に指定
     auto _menu = Menu::create(_nextButton, NULL);//
     _menu->setPosition(Vec2::ZERO);
     this->addChild(_menu, 1, 0);
+    
+    
+    // 20秒後にステージ2に自動で遷移させる
+    this->runAction(Sequence::create(DelayTime::create(20),CallFunc::create([this](){
+
+        // 効果音再生
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/battle_encount.m4a");
+        
+        // BGMの停止
+        CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+        
+        // replaceSceneで画面遷移を行う StageConversationを破棄して0.5秒かけてホワイトアウトしてStageに遷移する
+        Director::getInstance()->replaceScene(TransitionRotoZoom::create(0.5,StageScene2::createScene()));
+        
+    }), NULL));
 
     // 背景
     auto background = Sprite::create("res/dream_world_forest.png");
