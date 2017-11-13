@@ -52,7 +52,7 @@ bool StageConversation5::init() // 初期化処理
     // テキストの内容
     auto _text1 = Label::createWithTTF("チョコっと「ここはどこだろう？」\nミラ「なんかいる？」\nチョコっと「えっ？きゃぁ！！なに？」\n真紅「なにかいる！！」\nしーや「敵！？」⬇\n","fonts/ヒラギノ明朝 ProN W6.ttc", 14);
     // テキストの位置指定
-    _text1->setPosition(Vec2(visibleSize.width / 2 - 50, visibleSize.height / 4 - 80));
+    _text1->setPosition(Vec2(visibleSize.width / 2 - 65, visibleSize.height / 4 - 80));
     // テキストの文字色指定
     _text1->setColor(Color3B::WHITE);
     _text1->setOpacity(0);// テキストの透明化
@@ -149,7 +149,7 @@ bool StageConversation5::onTouchBegan(Touch* pTouch, Event* pEvent){
     _text1->setVisible(false);
 
     // テキストの内容
-    auto _text2 = Label::createWithTTF("チョコっと「すごく強そう！\nみんな気をつけて！！」\n","fonts/ヒラギノ明朝 ProN W6.ttc",15);
+    auto _text2 = Label::createWithTTF("チョコっと「すごく強そう！\nみんな気をつけて！！」\n","fonts/ヒラギノ明朝 ProN W6.ttc",14);
     // テキストの位置指定
     _text2->setPosition(Vec2(visibleSize.width / 2 - 90 , visibleSize.height / 4 - 50));
     // テキストの文字色指定
@@ -170,7 +170,7 @@ bool StageConversation5::onTouchBegan(Touch* pTouch, Event* pEvent){
                 _text2->getLetter(i)->setOpacity(255); //テキストを1文字ずつ透明化解除
             }
         });
-        //
+        // 0.2秒遅らせる
         auto delay = DelayTime::create(.2 * i);
         // 複数のアクションを順番に実行 delay→func
         auto seq = Sequence::create(delay, func, nullptr);
@@ -189,6 +189,9 @@ bool StageConversation5::onTouchBegan(Touch* pTouch, Event* pEvent){
      _menu->setPosition(Vec2::ZERO);
      this->addChild(_menu, 1, 0);
     
+    
+    
+    
     // エネミー1
     _enemy1 = BaseChara::create("res/delzeum.png");
     _enemy1->setAnchorPoint(Vec2(1.0,1.0));
@@ -196,11 +199,24 @@ bool StageConversation5::onTouchBegan(Touch* pTouch, Event* pEvent){
     _enemy1->setScale(4.0);
     this->addChild(_enemy1,1);
     
-    
     // 背景
     auto background = Sprite::create("res/central_crystal.png");
     background->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
     this->addChild(background,0);
+    
+    // 10秒後にステージ3に自動で遷移させる
+    this->runAction(Sequence::create(DelayTime::create(10),CallFunc::create([this](){
+        
+        // 効果音再生
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/battle_encount.m4a");
+        
+        // BGMの停止
+        CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+        
+        // replaceSceneで画面遷移を行う StageConversationを破棄して0.5秒かけてホワイトアウトしてStageに遷移する
+        Director::getInstance()->replaceScene(TransitionRotoZoom::create(0.5,StageScene3::createScene()));
+        
+    }), NULL));
     
     return true;
 }

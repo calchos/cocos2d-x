@@ -196,7 +196,7 @@ bool StageConversation4::onTouchBegan(Touch* pTouch, Event* pEvent){
     this->addChild(_character1,1);// 画面描画
     
     // ミラさん移動
-    _character4->runAction(MoveTo::create(2.0f,Vec2(origin.x + visibleSize.height / 2 + 130, origin.y + visibleSize.height / 2 + 50)));
+    _character4->runAction(MoveTo::create(2.0f,Vec2(origin.x + visibleSize.height / 2 + 120, origin.y + visibleSize.height / 2 + 50)));
     
     // 3秒後にマンドラ先輩ミラさんに食べられて消滅ｗ＼(^o^)／
     this->runAction(Sequence::create(DelayTime::create(3),CallFunc::create([this](){

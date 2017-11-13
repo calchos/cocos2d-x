@@ -36,11 +36,6 @@ public:
     int playerAttack();// プレイヤーキャラクターのトータルダメージ数
     int enemyAttack();// 敵キャラクターのトータルダメージ数
     
-    int playerPredefense();// プレイヤーキャラクターの先制防御
-    int enemyPreemptiveAttack();// 敵キャラクターの先制攻撃
-    
-    bool _preemptive_attack; // 敵の先制攻撃フラグ
-    
     void update(float delta);// 更新処理定義
     
     // 画面タップ処理
