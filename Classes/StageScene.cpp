@@ -395,6 +395,20 @@ void StageScene::update(float delta){
                 Point origin = Director::getInstance()->getVisibleOrigin();
                 Director::getInstance()->setDisplayStats(false); // stats OFF*
                 
+                // _enemy1をタグ呼び出し
+                auto _enemy1 = this->getChildByTag(4);
+                // _enemy1を非表示
+                _enemy1->setVisible(false);
+                
+                // ソダテンダー攻撃ポーズ
+                _enemy1 = BaseChara::create("res/cactuar_attack.png");
+                _enemy1->setAnchorPoint(Vec2(1.0,1.0));
+                _enemy1->setPosition(Vec2(origin.x + 150 + 50, origin.y + visibleSize.height / 2 ));
+                _enemy1->setScale(2.0);
+                _enemy1->setTag(13);
+                this->addChild(_enemy1,1);
+                
+                
                 // 効果音再生
                 CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/crystal_sound.m4a");
                 
@@ -461,7 +475,7 @@ void StageScene::update(float delta){
                 // 勝利演出を表示
                 
                 // _enemy1を削除
-                auto _enemy1 = this->getChildByTag(4);
+                auto _enemy1 = this->getChildByTag(13);
                 _enemy1->setVisible(false);
                 
                 // 敵のクリスタル削除

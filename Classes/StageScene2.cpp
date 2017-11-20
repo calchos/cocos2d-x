@@ -388,6 +388,18 @@ void StageScene2::update(float delta){
                 Point origin = Director::getInstance()->getVisibleOrigin();
                 Director::getInstance()->setDisplayStats(false); // stats OFF*
                 
+                // _enemy1を削除
+                auto _enemy1 = this->getChildByTag(4);
+                _enemy1->setVisible(false);
+                
+                // マンドラ先輩攻撃ポーズ
+                _enemy1 = BaseChara::create("res/senior_mandora_attack.png");
+                _enemy1->setAnchorPoint(Vec2(1.0,1.0));
+                _enemy1->setPosition(Vec2(origin.x + 150 + 50, origin.y + visibleSize.height / 2 ));
+                _enemy1->setScale(1.0);
+                _enemy1->setTag(13);
+                this->addChild(_enemy1,1);
+                
                 // 効果音再生
                 CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/crystal_sound.m4a");
                 
@@ -449,7 +461,7 @@ void StageScene2::update(float delta){
                 // 勝利演出を表示
                 
                 // _enemy1を削除
-                auto _enemy1 = this->getChildByTag(4);
+                auto _enemy1 = this->getChildByTag(13);
                 _enemy1->setVisible(false);
                 
                 // 敵のクリスタル削除
@@ -690,7 +702,7 @@ int StageScene2::enemyAttack(){
     // 乱数初期化
     srand((unsigned int)time(NULL));
     int m = 0;// 乱数用変数の初期値
-    _enemyCrystalPower = rand()%(m+200);
+    _enemyCrystalPower = rand()%(m+250);
     
     int _enemyCrystalValueArray[] = {_enemyCrystalPower};// クリスタル値を配列に格納する
     int _enemyCrystalPowers = 0;

@@ -41,17 +41,17 @@ bool StageConversation7::init() // 初期化処理
     auto listener = EventListenerTouchOneByOne::create();
     listener->onTouchBegan = CC_CALLBACK_2(StageConversation7::onTouchBegan, this);
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-    
-    // 現在流れている音楽を停止
-    CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
 
-    // 効果音再生
-    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/before_final_battle.m4a");
+    // BGMプリロード
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("music/before_final_battle.m4a");
+    
+    // BGM再生
+    CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("music/before_final_battle.m4a", true);
     
     // テキストの内容
-    auto _text1 = Label::createWithTTF("チョコっと「ここはどこなの？それになんなのこの空間？」\n？？？「世界の中心ーーセントラル・ゼロへようこそ！クリスタルセイヴァーの諸君！」\nチョコっと「もう一度聞きます！あなたは何者なのですか！？」\n？？？「わたしの名はゼローーゼロ・クリエイト。\n零を創りし者。キミたちのクリスタルの力今ここで試させてもらおう！」","fonts/ヒラギノ明朝 ProN W6.ttc",15);
+    auto _text1 = Label::createWithTTF("チョコっと「ここはどこなの？それにこの空間は何？」\n？？？「世界の中心ーーセントラル・ゼロへようこそ！\nクリスタルセイヴァーの諸君！」\nチョコっと「もう一度聞きます！あなたは何者なの！？」\n？？？「私の名はゼローー次元超越者\nゼロ・クリエイト キミたちの力試させてもらおうか！」","fonts/ヒラギノ明朝 ProN W6.ttc",14);
     // テキストの位置指定
-    _text1->setPosition(Vec2(visibleSize.width / 2 , visibleSize.height / 4 - 80));
+    _text1->setPosition(Vec2(visibleSize.width / 2 - 10 , visibleSize.height / 4 - 80));
     // テキストの文字色指定
     _text1->setColor(Color3B::WHITE);
     _text1->setOpacity(0);// テキストの透明化
@@ -117,13 +117,13 @@ bool StageConversation7::init() // 初期化処理
     this->addChild(_character4, 1);
     
     
-        // ゼロ表示
-        _enemy = BaseChara::create("res/zero.png");// スプライト画像読み込み
-        _enemy->setAnchorPoint(Vec2(1.0,1.0));// アンカーポイント指定
-        _enemy->setPosition(Vec2(origin.x + 200, origin.y + visibleSize.height / 2 - 20));// 位置指定
-        _enemy->setFlippedX(true);
-        _enemy->setScale(2.0);// スプライトの拡大率を2.0倍に指定
-        this->addChild(_enemy,1);// 画面描画
+    // ゼロ表示
+    _enemy = BaseChara::create("res/zero.png");// スプライト画像読み込み
+    _enemy->setAnchorPoint(Vec2(1.0,1.0));// アンカーポイント指定
+    _enemy->setPosition(Vec2(origin.x + 150, origin.y + visibleSize.height / 2 - 20));// 位置指定
+    _enemy->setFlippedX(true);
+    _enemy->setScale(2.0);// スプライトの拡大率を2.0倍に指定
+    this->addChild(_enemy,1);// 画面描画
     
     
     // テキスト表示ウィンドウ
@@ -137,19 +137,22 @@ bool StageConversation7::init() // 初期化処理
     this->addChild(background,0);
     
     // MenuItemImageでメニューボタン追加 引数にはボタンを押した時の動作を指定
-    auto _nextButton = MenuItemImage::create("res/skip_button.png","res/skip_button_pushed.png",CC_CALLBACK_1(StageConversation7::nextSceneCallback, this));
-    _nextButton->setPosition(Vec2(visibleSize.width / 2 + 150, visibleSize.height / 4 - 120));// ボタンの位置を画面中央に指定
-    auto _menu = Menu::create(_nextButton, NULL);//
+    auto _skipButton = MenuItemImage::create("res/skip_button.png","res/skip_button_pushed.png",CC_CALLBACK_1(StageConversation7::nextSceneCallback, this));
+    _skipButton->setPosition(Vec2(visibleSize.width / 2 + 170, visibleSize.height / 4 - 130));
+    auto _menu = Menu::create(_skipButton, NULL);//
     _menu->setPosition(Vec2::ZERO);
     this->addChild(_menu, 1, 0);
     
-     // 15秒後にステージ4に自動で遷移させる
-     this->runAction(Sequence::create(DelayTime::create(15),CallFunc::create([this](){
-        // 効果音再生
-        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/battle_encount.m4a");
+     // 30秒後にステージ4に自動で遷移させる
+     this->runAction(Sequence::create(DelayTime::create(30),CallFunc::create([this](){
+         // 効果音再生
+         CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/battle_encount.m4a");
+         
+         // BGMの停止
+         CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
         
-        // ステージシーン4へ遷移
-        Director::getInstance()->replaceScene(TransitionRotoZoom::create(1.0,StageScene4::createScene()));
+         // ステージ4へ遷移
+         Director::getInstance()->replaceScene(TransitionRotoZoom::create(1.0,StageScene4::createScene()));
     
       }), NULL));
     

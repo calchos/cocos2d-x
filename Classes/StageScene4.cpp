@@ -1,7 +1,7 @@
 #pragma execution_character_set("utf-8") // 文字コード指定
 #include "StageScene4.h"
 #include "StageConversation7.hpp"
-// #include "StageConversation8.hpp"
+#include "EndingConversation.hpp"
 #include "SimpleAudioEngine.h"
 
 USING_NS_CC; // #define USING_NS_CC using namespace cocos2d
@@ -98,15 +98,15 @@ bool StageScene4::init()
     // ゼロ
     _enemy = BaseChara::create("res/zero.png");
     _enemy->setAnchorPoint(Vec2(1.0,1.0));
-    _enemy->setPosition(Vec2(origin.x + visibleSize.height / 2 - 30, origin.y + visibleSize.height / 2 + 100));
+    _enemy->setPosition(Vec2(origin.x + visibleSize.height / 2 - 90, origin.y + visibleSize.height / 2 + 90));
     _enemy->setScale(2.0);
     _enemy->setFlippedX(true);
     this->addChild(_enemy,1);
     
     
     // 敵出現テキスト
-    auto _text1 = Label::createWithSystemFont("ゼロ・クリエイトがあらわれた！▼", "fonts/ヒラギノ明朝 ProN W6.ttc",15);
-    _text1->setPosition(Point(visibleSize.width / 2 + origin.x - 60, visibleSize.height / 2 + origin.y - 180));
+    auto _text1 = Label::createWithTTF("次元超越者ゼロ・クリエイトがあらわれた！▼", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+    _text1->setPosition(Point(visibleSize.width / 2 + origin.x - 30, visibleSize.height / 2 + origin.y - 180));
     _text1->setTag(5);// text1をタグ指定
     this->addChild(_text1,2);
     
@@ -128,16 +128,15 @@ bool StageScene4::init()
 // 画面をタップした瞬間に1回だけ実行する時の処理
 bool StageScene4::onTouchBegan(Touch* pTouch, Event* pEvent){
     
-    // イベント終了後、会話シーン8の画面に遷移する
+    // イベント終了後、エンディング会話シーンの画面に遷移する
     if(_state == TYPE_EVENT_END){
     
         // 現在流れている音楽を停止
         CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
-        /*
+        
         Director::getInstance()->replaceScene(TransitionFade::create(2.0
-                                                                     , StageConversation8::createScene()
+                                                                     ,EndingConversation::createScene()
                                                                      , Color3B::WHITE));
-        */
     }
     
     // キャラクタータグ呼び出し
@@ -179,21 +178,21 @@ bool StageScene4::onTouchBegan(Touch* pTouch, Event* pEvent){
         _character1->setTag(14);
         this->addChild(_character1,1);// 画面描画
         
-        auto _text2 = Label::createWithSystemFont("チョコっとの武器攻撃。\nしかしクリスタルが衰えてしまい\n本来の力が出せない！▼", "fonts/ヒラギノ明朝 ProN W6.ttc",18);
-        _text2->setPosition(Point(visibleSize.width / 2 + origin.x - 30, visibleSize.height / 2 + origin.y - 180));
+        auto _text2 = Label::createWithTTF("チョコっとの武器攻撃。\nしかしクリスタルが衰えてしまい\n本来の力が出せない！▼", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+        _text2->setPosition(Point(visibleSize.width / 2 + origin.x - 85, visibleSize.height / 2 + origin.y - 190));
         _text2->setTag(6);
         this->addChild(_text2,2);
         
         
         // クリスタル画像
-        auto _crystal = Sprite::create("res/crystal_light.png");
-        _crystal->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
+        auto _crystal = Sprite::create("res/crystal_light_fade.png");
+        _crystal->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 155));
         _crystal->setScale(1.5f);
         _crystal->setTag(7);
         this->addChild(_crystal,0);
         
         // クリスタルパワー
-        auto _crystalValue = Label::createWithSystemFont(StringUtils::toString(_crystalPower1),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
+        auto _crystalValue = Label::createWithTTF(StringUtils::toString(_crystalPower1),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
         _crystalValue->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
         _crystalValue->setTag(8);
         this->addChild(_crystalValue,2);
@@ -216,23 +215,24 @@ bool StageScene4::onTouchBegan(Touch* pTouch, Event* pEvent){
         _character2->setAnchorPoint(Vec2(1.0,1.0));// アンカーポイント指定
         _character2->setPosition(Vec2(origin.x + 400, origin.y + visibleSize.height / 2 - 20));// 位置指定
         _character2->setScale(2.0);// スプライトの拡大率を2.0倍に指定
+        _character2->setTag(18);
         this->addChild(_character2,1);// 画面描画
         
-        auto _text2 = Label::createWithSystemFont("真紅の歌う攻撃。\nクリスタルが真紅に力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",18);
-        _text2->setPosition(Point(visibleSize.width / 2 + origin.x - 50, visibleSize.height / 2 + origin.y - 180));
+        auto _text2 = Label::createWithTTF("真紅の歌う攻撃。\nしかしクリスタルが衰えてしまい\n本来の力が出せない！▼", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+        _text2->setPosition(Point(visibleSize.width / 2 + origin.x - 85, visibleSize.height / 2 + origin.y - 190));
         _text2->setTag(6);
         this->addChild(_text2,2);
         
         
         // クリスタル画像
-        auto _crystal = Sprite::create("res/crystal_fire.png");
-        _crystal->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
+        auto _crystal = Sprite::create("res/crystal_fire_fade.png");
+        _crystal->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 155));
         _crystal->setScale(1.5f);
         _crystal->setTag(7);
         this->addChild(_crystal,0);
         
         // クリスタルパワー
-        auto _crystalValue = Label::createWithSystemFont(StringUtils::toString(_crystalPower2),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
+        auto _crystalValue = Label::createWithTTF(StringUtils::toString(_crystalPower2),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
         _crystalValue->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
         _crystalValue->setTag(8);
         this->addChild(_crystalValue,2);
@@ -249,33 +249,32 @@ bool StageScene4::onTouchBegan(Touch* pTouch, Event* pEvent){
         // _character3を非表示
         _character3->setVisible(false);
         
-        // 乱数初期化
-        srand((unsigned int)time(NULL));
-        int m = 0;// 乱数用変数の初期値
-        _crystalPower3 = rand()%(m+99);
+        // クリスタルパワー
+        _crystalPower3 = 0;
         
         // しーやさんの魔法攻撃
         _character3 = BaseChara::create("res/syiya_attack_01.png");// スプライト画像読み込み
         _character3->setAnchorPoint(Vec2(1.0,1.0));// アンカーポイント指定
         _character3->setPosition(Vec2(origin.x + 550, origin.y + visibleSize.height / 2 - 20));// 位置指定
         _character3->setScale(2.0);// スプライトの拡大率を2.0倍に指定
+        _character3->setTag(19);
         this->addChild(_character3,1);// 画面描画
         
-        auto _text2 = Label::createWithSystemFont("しーやの魔法攻撃。\nクリスタルがしーやに力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",18);
-        _text2->setPosition(Point(visibleSize.width / 2 + origin.x - 50, visibleSize.height / 2 + origin.y - 180));
+        auto _text2 = Label::createWithTTF("しーやの魔法攻撃。\nしかしクリスタルが衰えてしまい\n本来の力が出せない！▼", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+        _text2->setPosition(Point(visibleSize.width / 2 + origin.x - 85, visibleSize.height / 2 + origin.y - 190));
         _text2->setTag(6);//タグ付け
         this->addChild(_text2,2);
         
         
         // クリスタル画像
-        auto _crystal = Sprite::create("res/crystal_water.png");
-        _crystal->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
+        auto _crystal = Sprite::create("res/crystal_water_fade.png");
+        _crystal->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 155));
         _crystal->setScale(1.5f);
         _crystal->setTag(7);
         this->addChild(_crystal,0);
         
-        // クリスタルパワー
-        auto _crystalValue = Label::createWithSystemFont(StringUtils::toString(_crystalPower3),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
+        // クリスタルパワー表示
+        auto _crystalValue = Label::createWithTTF(StringUtils::toString(_crystalPower3),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
         _crystalValue->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
         _crystalValue->setTag(8);
         this->addChild(_crystalValue,2);
@@ -290,34 +289,32 @@ bool StageScene4::onTouchBegan(Touch* pTouch, Event* pEvent){
         
         // _character4を非表示
         _character4->setVisible(false);
-        
-        // 乱数初期化
-        srand((unsigned int)time(NULL));
-        int m = 0;// 乱数用変数の初期値
-        _crystalPower4 = rand()%(m+99);
+        // クリスタル力4
+        _crystalPower4 = 0;
         
         // ミラさんのジャンプ攻撃
         _character4 = BaseChara::create("res/mira_attack_01.png");// スプライト画像読み込み
         _character4->setAnchorPoint(Vec2(1.0,1.0));// アンカーポイント指定
         _character4->setPosition(Vec2(origin.x + 550, origin.y + visibleSize.height / 2 + 100));// 位置指定
         _character4->setScale(2.0);// スプライトの拡大率を2.0倍に指定
+        _character4->setTag(16);
         this->addChild(_character4,1);// 画面描画
         
-        auto _text2 = Label::createWithSystemFont("ミラのジャンプ攻撃。\nクリスタルがミラに力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",18);
-        _text2->setPosition(Point(visibleSize.width / 2 + origin.x - 50, visibleSize.height / 2 + origin.y - 180));
+        auto _text2 = Label::createWithTTF("ミラのジャンプ攻撃。\nしかしクリスタルが衰えてしまい\n本来の力が出せない！▼", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+        _text2->setPosition(Point(visibleSize.width / 2 + origin.x - 85, visibleSize.height / 2 + origin.y - 190));
         _text2->setTag(6);//タグ付け
         this->addChild(_text2,2);
         
         
         // クリスタル画像
         auto _crystal = Sprite::create("res/crystal_earth.png");
-        _crystal->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
+        _crystal->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 155));
         _crystal->setScale(1.5f);
         _crystal->setTag(7);
         this->addChild(_crystal,0);
         
         // クリスタルパワー
-        auto _crystalValue = Label::createWithSystemFont(StringUtils::toString(_crystalPower4),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
+        auto _crystalValue = Label::createWithTTF(StringUtils::toString(_crystalPower4),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
         _crystalValue->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
         _crystalValue->setTag(8);
         this->addChild(_crystalValue,2);
@@ -365,11 +362,145 @@ void StageScene4::update(float delta){
     
     // 敵のターン
     if(_state == TYPE_ENEMY_TURN){
-        // 敵がまだ攻撃していないとき
-        if(!_enemy->_doAttack){
+         // イベント発生
+         _state = TYPE_EVENT_OCCURRED;
+        
+    }
+    
+    // イベント発生ターン
+    else if(_state == TYPE_EVENT_OCCURRED){
+        
+        // _gameEndEventがfalseのときtrueにする
+        if(!_gameEndEvent){
+            _gameEndEvent = true;
+ 
+            // 3秒後にテキスト表示
+            this->runAction(Sequence::create(DelayTime::create(3),CallFunc::create([this](){
+                
+                // 画面サイズ指定
+                auto visibleSize = Director::getInstance()->getVisibleSize();
+                Point origin = Director::getInstance()->getVisibleOrigin();
+                Director::getInstance()->setDisplayStats(false); // stats OFF*
+                
+                // チョコさんセリフ
+                auto _text3 = Label::createWithTTF("チョコっと「そんな・・・\nクリスタルの力が発動できない！！」", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+                _text3->setPosition(Point(visibleSize.width / 2 + origin.x - 70, visibleSize.height / 2 + origin.y - 180));
+                _text3->setTag(9);
+                this->addChild(_text3,2);
+                
+                }), NULL));
             
-            // 2秒後にラムダ式を実行
-            this->runAction(Sequence::create(DelayTime::create(2),CallFunc::create([this](){
+            
+            // 6秒後にテキスト表示
+            this->runAction(Sequence::create(DelayTime::create(6),CallFunc::create([this](){
+                
+                // _text3をタグを指定して呼び出す
+                auto _text3 = this->getChildByTag(9);
+                // _text3を非表示にする
+                _text3->setVisible(false);
+                
+                // _character1をタグを指定して呼び出す
+                auto _character1 = this->getChildByTag(14);
+                // _character1を非表示にする
+                _character1->setVisible(false);
+                
+                // 画面サイズ指定
+                auto visibleSize = Director::getInstance()->getVisibleSize();
+                Point origin = Director::getInstance()->getVisibleOrigin();
+                Director::getInstance()->setDisplayStats(false); // stats OFF*
+                
+                // チョコさんクリスタル化
+                _character1 = BaseChara::create("res/chocoto_crystalize.png");// スプライト画像読み込み
+                _character1->setAnchorPoint(Vec2(1.0,1.0));// アンカーポイント指定
+                _character1->setPosition(Vec2(origin.x + 400, origin.y + visibleSize.height / 2 + 100));// 位置指定
+                _character1->setScale(2.0);// スプライトの拡大率を2.0倍に指定
+                _character1->setTag(15);
+                this->addChild(_character1,1);// 画面描画
+                
+                
+                // 効果音再生
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/crystalize.m4a");
+                
+                // チョコさんクリスタルに閉じ込められる
+                auto _text4 = Label::createWithTTF("チョコっと「えっ？閉じ込められたの？\nちょっとここから出してよー！」", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+                _text4->setPosition(Point(visibleSize.width / 2 + origin.x - 70, visibleSize.height / 2 + origin.y - 180));
+                _text4->setTag(10);
+                this->addChild(_text4,2);
+                
+            }), NULL));
+            
+       
+            // 10秒後にテキスト表示
+            this->runAction(Sequence::create(DelayTime::create(10),CallFunc::create([this](){
+                
+                // _text4をタグを指定して呼び出す
+                auto _text4 = this->getChildByTag(10);
+                // _text3を非表示にする
+                _text4->setVisible(false);
+                
+                // 画面サイズ指定
+                auto visibleSize = Director::getInstance()->getVisibleSize();
+                Point origin = Director::getInstance()->getVisibleOrigin();
+                Director::getInstance()->setDisplayStats(false); // stats OFF*
+                
+                // ゼロセリフ
+                auto _text5 = Label::createWithTTF("ゼロ「セイヴァーチョコっと\nセイヴァーとしてキミの力見せてもらった\nだが今しばらくはクリスタルの中で眠っていてもらおうか！」", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+                _text5->setPosition(Point(visibleSize.width / 2 + origin.x + 5 , visibleSize.height / 2 + origin.y - 190));
+                _text5->setTag(11);
+                this->addChild(_text5,2);
+                
+            }), NULL));
+            
+            // 15秒後にテキスト表示
+            this->runAction(Sequence::create(DelayTime::create(15),CallFunc::create([this](){
+            
+                // _text5をタグを指定して呼び出す
+                auto _text5 = this->getChildByTag(11);
+                // _text5を非表示にする
+                _text5->setVisible(false);
+                
+                // 画面サイズ指定
+                auto visibleSize = Director::getInstance()->getVisibleSize();
+                Point origin = Director::getInstance()->getVisibleOrigin();
+                Director::getInstance()->setDisplayStats(false); // stats OFF*
+                
+                // チョコさぁーーーーーーーーん！！！ヽ(´Д`)ノ
+                auto _text6 = Label::createWithTTF("チョコっと「きゃぁぁーーーーーーーー！！！！！」", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+                _text6->setPosition(Point(visibleSize.width / 2 + origin.x - 25, visibleSize.height / 2 + origin.y - 180));
+                _text6->setTag(12);
+                this->addChild(_text6,2);
+            
+             }), NULL));
+            
+            // チョコさん消えちゃった・・・(´・ω・`)
+            this->runAction(Sequence::create(DelayTime::create(18),CallFunc::create([this](){
+                
+                // 効果音再生
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/crystalize.m4a");
+                
+                // _text6をタグを指定して呼び出す
+                auto _text6 = this->getChildByTag(12);
+                // _text6を非表示にする
+                _text6->setVisible(false);
+                
+                // _character1をタグ指定して呼び出す
+                auto _character1 = this->getChildByTag(15);
+                // _character1を非表示にする
+                _character1->setVisible(false);
+                
+                
+                
+            }), NULL));
+            
+            
+            
+            // ミラさんもクリスタルに閉じ込められる
+            this->runAction(Sequence::create(DelayTime::create(20),CallFunc::create([this](){
+                
+                // _character4をタグを指定して呼び出す
+                auto _character4 = this->getChildByTag(16);
+                // _character4を非表示にする
+                _character4->setVisible(false);
                 
                 // 画面サイズ指定
                 auto visibleSize = Director::getInstance()->getVisibleSize();
@@ -377,98 +508,86 @@ void StageScene4::update(float delta){
                 Director::getInstance()->setDisplayStats(false); // stats OFF*
                 
                 // 効果音再生
-                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/crystal_sound.m4a");
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/crystalize.m4a");
                 
-                auto _text3 = Label::createWithSystemFont("", "fonts/ヒラギノ明朝 ProN W6.ttc",18);
-                _text3->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y - 180));
-                _text3->setTag(10);//タグ付け
-                this->addChild(_text3,2);
+                // ミラさんクリスタル化
+                _character4 = BaseChara::create("res/mira_crystalize.png");// スプライト画像読み込み
+                _character4->setAnchorPoint(Vec2(1.0,1.0));// アンカーポイント指定
+                _character4->setPosition(Vec2(origin.x + 550, origin.y + visibleSize.height / 2 + 100));// 位置指定
+                _character4->setScale(2.0);// スプライトの拡大率を2.0倍に指定
+                _character4->setTag(17);
+                this->addChild(_character4,1);// 画面描画
                 
+                // ミラつぁーーーーーーーーん！！！ヽ(´Д`)ノ
+                auto _text7 = Label::createWithTTF("ミラ「チョコちゃん！！うわぁっ！」\nゼロ「キミもだ！セイヴァーミラ！\n今のキミたちのクリスタルの力では私には敵わない！\n来るべき時まで眠りにつくといい！」", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+                _text7->setPosition(Point(visibleSize.width / 2 + origin.x - 25, visibleSize.height / 2 + origin.y - 200));
+                _text7->setTag(13);
+                this->addChild(_text7,2);
                 
-                // クリスタル画像
-                auto _enemyCrystal = Sprite::create("res/crystal_light.png");
-                _enemyCrystal->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
-                _enemyCrystal->setScale(1.5f);
-                _enemyCrystal->setTag(11);
-                this->addChild(_enemyCrystal,0);
+            
+            }), NULL));
+            
+            
+            // ミラさん消えちゃった・・・(´・ω・`)
+            this->runAction(Sequence::create(DelayTime::create(25),CallFunc::create([this](){
                 
-                // 敵のクリスタルパワー
-                auto _enemyCrystalValue = Label::createWithSystemFont(StringUtils::toString(_enemyCrystalPower),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
-                _enemyCrystalValue->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
-                _enemyCrystalValue->setTag(12);
-                this->addChild(_enemyCrystalValue,2);
+                // 効果音再生
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/crystalize.m4a");
                 
-                log("敵のクリスタル力");
-                log("%i",_enemyCrystalPower);
+                // _text7をタグを指定して呼び出す
+                auto _text7 = this->getChildByTag(13);
+                // _text7を非表示にする
+                _text7->setVisible(false);
                 
+                // _character4をタグ指定して呼び出す
+                auto _character1 = this->getChildByTag(17);
+                // _character4を非表示にする
+                _character1->setVisible(false);
                 
                 
             }), NULL));
             
             
-            // プレイヤーのトータルクリスタル数値計算処理
-            int _totalCrystalPower = playerAttack();
-            
-            log("プレイヤーの総合クリスタルパワー");
-            log("%i",_totalCrystalPower);
-            // 敵のトータルクリスタル数値計算処理
-            int _totalEnemyCrystalPower = enemyAttack();
-            // デバッグログ
-            log("敵の総合クリスタルパワー");
-            log("%i",_totalEnemyCrystalPower);
-            
-            
-            // イベント発生
-            _state = TYPE_EVENT_OCCURRED;
-
-            
-        }
-        
-    }
-    
-    // イベント発生ターン
-    else if(_state == TYPE_EVENT_OCCURRED){
-        
-        if(!_gameEndEvent){
-            _gameEndEvent = true;
-            
-            
-            // 4秒後にテキスト表示
-            this->runAction(Sequence::create(DelayTime::create(4),CallFunc::create([this](){
-            
-            
-                // _text3をタグを指定して呼び出す
-                auto _text3 = this->getChildByTag(10);
-                // _text3を非表示にする
-                _text3->setVisible(false);
-                
-                auto _enemyCrystal = this->getChildByTag(11);
-                _enemyCrystal->setVisible(false);
-                
-                auto _enemyCrystalValue = this->getChildByTag(12);
-                _enemyCrystalValue->setVisible(false);
-
+            this->runAction(Sequence::create(DelayTime::create(30),CallFunc::create([this](){
                 
                 // 画面サイズ指定
                 auto visibleSize = Director::getInstance()->getVisibleSize();
                 Point origin = Director::getInstance()->getVisibleOrigin();
                 Director::getInstance()->setDisplayStats(false); // stats OFF*
                 
-                // チョコさんピンチ！(；´Д｀)
-                auto _text4 = Label::createWithTTF("チョコっと「強い…このままじゃ私たちやられちゃう…」", "fonts/ヒラギノ明朝 ProN W6.ttc",15);
-                _text4->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y - 180));
-                _text4->setTag(13);
-                this->addChild(_text4,2);
+                // 真紅さん・しーやさん・ゼロセリフ
+                auto _text8 = Label::createWithTTF("真紅「一体何が・・・」\nしーや「起こっているの？」\nゼロ「キミたちはセイヴァーの力に導かれて\nこの世界にやってきたのか・・・\nキミたちに用はない・・・大人しく消えるといい」\n真紅・しーや「！？」", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+                _text8->setPosition(Point(visibleSize.width / 2 + origin.x - 25, visibleSize.height / 2 + origin.y - 225));
+                _text8->setTag(20);
+                this->addChild(_text8,2);
                 
-                }), NULL));
+                
+            }), NULL));
             
-       
-                
-                // イベントエンドフラグ
-                 _state = TYPE_EVENT_END;
-                
             
+            // 真紅さんとしーやさんも消えちゃった・・・(´・ω・`)
+            this->runAction(Sequence::create(DelayTime::create(35),CallFunc::create([this](){
+            
+                // _text8をタグを指定して呼び出す
+                auto _text8 = this->getChildByTag(20);
+                // _text8を非表示にする
+                _text8->setVisible(false);
+                
+                // _character3をタグ指定して呼び出す
+                auto _character3 = this->getChildByTag(18);
+                // _character4を非表示にする
+                _character3->setVisible(false);
+                
+                // _character4をタグ指定して呼び出す
+                auto _character4 = this->getChildByTag(19);
+                // _character4を非表示にする
+                _character4->setVisible(false);
 
+                // イベントエンドフラグ
+                _state = TYPE_EVENT_END;
+            
+            }), NULL));
+            
             
         }
         
@@ -508,49 +627,6 @@ void StageScene4::intervalDeleteAction(float delta){
     
 }
 
-// プレイヤーのトータルダメージ計算処理
-int StageScene4::playerAttack(){
-    
-    int _crystalValueArray[] = {_crystalPower1,_crystalPower2,_crystalPower3,_crystalPower4};// クリスタル値を配列に格納する
-    
-    int _crystalPowers = 0;
-    // _tatalCrystalValueを出力する
-    for(int _totalCrystalValue : _crystalValueArray){
-        
-        // デバッグログ
-        //log("%i",_totalCrystalValue);
-        // 総合クリスタル値
-        _crystalPowers += _totalCrystalValue;
-        // デバッグログ
-        //log("%i",_crystalPowers);
-        
-    }
-    
-    return _crystalPowers;
-}
-
-// 敵のトータルダメージ計算処理
-int StageScene4::enemyAttack(){
-    
-    // 乱数初期化
-    srand((unsigned int)time(NULL));
-    // 敵のクリスタル数値
-    _enemyCrystalPower = 600;
-    
-    int _enemyCrystalValueArray[] = {_enemyCrystalPower};// クリスタル値を配列に格納する
-    int _enemyCrystalPowers = 0;
-    // _tatalCrystalValueを出力する
-    for(int _totalEnemyCrystalValue : _enemyCrystalValueArray){
-        
-        // 総合クリスタル値
-        _enemyCrystalPowers += _totalEnemyCrystalValue;
-        // デバッグログ
-        //log("%i",_enemyCrystalPowers);
-        
-    }
-    
-    return _enemyCrystalPowers;
-}
 
 
 

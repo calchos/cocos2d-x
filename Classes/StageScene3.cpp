@@ -383,9 +383,21 @@ void StageScene3::update(float delta){
                 Point origin = Director::getInstance()->getVisibleOrigin();
                 Director::getInstance()->setDisplayStats(false); // stats OFF*
                 
+                // デルゼウム非表示
+                auto _enemy1 = this->getChildByTag(4);
+                _enemy1->setVisible(false);
+                
+                // デルゼウム攻撃ポーズ
+                _enemy1 = BaseChara::create("res/delzeum_attack.png");
+                _enemy1->setAnchorPoint(Vec2(1.0,1.0));
+                _enemy1->setPosition(Vec2(origin.x + visibleSize.height / 2 - 30, origin.y + visibleSize.height / 2 + 100));
+                _enemy1->setScale(4.0);
+                _enemy1->setTag(21);
+                this->addChild(_enemy1,1);
+                
                 // 効果音再生
                 CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/crystal_sound.m4a");
-                auto _text3 = Label::createWithTTF("デルゼウムのアームドブレイク。\nクリスタルがデルゼウムに力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+                auto _text3 = Label::createWithTTF("デルゼウムのブレイクアームズ。\nクリスタルがデルゼウムに力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
                 _text3->setPosition(Point(visibleSize.width / 2 + origin.x - 50, visibleSize.height / 2 + origin.y - 180));
                 _text3->setTag(10);//タグ付け
                 this->addChild(_text3,2);
@@ -454,7 +466,7 @@ void StageScene3::update(float delta){
                 
                 // チョコさんピンチ！(；´Д｀)
                 auto _text4 = Label::createWithTTF("チョコっと「強い…このままじゃ私たちやられちゃう…」", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
-                _text4->setPosition(Point(visibleSize.width / 2 + origin.x - 15, visibleSize.height / 2 + origin.y - 180));
+                _text4->setPosition(Point(visibleSize.width / 2 + origin.x - 10, visibleSize.height / 2 + origin.y - 180));
                 _text4->setTag(13);
                 this->addChild(_text4,2);
                 
@@ -610,7 +622,7 @@ void StageScene3::update(float delta){
                 _crystalValue->setVisible(false);
                 
                 // デルゼウム非表示
-                auto _enemy1 = this->getChildByTag(4);
+                auto _enemy1 = this->getChildByTag(21);
                 _enemy1->setVisible(false);
                 
                 // 勝利メッセージ

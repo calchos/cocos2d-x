@@ -16,7 +16,7 @@ public:
     static cocos2d::Scene* createScene(); // publicでcreateScene()を継承
     virtual bool init(); // 仮想関数でオーバーライド
     
-    // 会話シーン6に遷移
+    // 会話シーン7に遷移
     void nextSceneCallback(cocos2d::Ref* pSender);
     
     // タッチ処理

@@ -43,9 +43,9 @@ bool StageConversation6::init() // 初期化処理
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
     
     // テキストの内容
-    auto _text1 = Label::createWithTTF("チョコっと「あなたは一体？」\n？？？「自分…いや私か？」\nチョコっと「えっ？」\nしーや・真紅「！？」\n？？？「クリスタル・・・そうか彼らこそ選ばれし者にふさわしい⬇\n","fonts/ヒラギノ明朝 ProN W6.ttc", 14);
+    auto _text1 = Label::createWithTTF("チョコっと「あなたは一体？」\n？？？「自分…いや私か？」\nチョコっと「えっ？」\nしーや・真紅「！？」\n？？？「クリスタル・・・そうか彼らこそ\n選ばれし者にふさわしい」\n","fonts/ヒラギノ明朝 ProN W6.ttc", 14);
     // テキストの位置指定
-    _text1->setPosition(Vec2(visibleSize.width / 2 , visibleSize.height / 4 - 80));
+    _text1->setPosition(Vec2(visibleSize.width / 2 - 60, visibleSize.height / 4 - 90));
     // テキストの文字色指定
     _text1->setColor(Color3B::WHITE);
     _text1->setOpacity(0);// テキストの透明化
@@ -112,7 +112,7 @@ bool StageConversation6::init() // 初期化処理
     
     
     // カルチョス？
-    _character5 = BaseChara::create("res/crystal_deploy_calchos.png");// スプライト画像読み込み
+    _character5 = BaseChara::create("res/calchos.png");// スプライト画像読み込み
     _character5->setAnchorPoint(Vec2(1.0,1.0));// アンカーポイント指定
     _character5->setPosition(Vec2(origin.x + 320, origin.y + visibleSize.height / 2 - 20));// 位置指定
     _character5->setScale(2.0);// スプライトの拡大率を2.0倍に指定
@@ -147,7 +147,7 @@ bool StageConversation6::init() // 初期化処理
         // ゼロのテーマ再生
         CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("music/zero_create.m4a", true);
         
-        // ゼロ表示
+        // ゼロ
         _enemy = BaseChara::create("res/zero.png");// スプライト画像読み込み
         _enemy->setAnchorPoint(Vec2(1.0,1.0));// アンカーポイント指定
         _enemy->setPosition(Vec2(origin.x + 320, origin.y + visibleSize.height / 2 - 20));// 位置指定
@@ -173,28 +173,14 @@ bool StageConversation6::init() // 初期化処理
     }), NULL));
     
     
-    // 20秒後にボタン表示
-    this->runAction(Sequence::create(DelayTime::create(20),CallFunc::create([this](){
+    // 39秒後に会話シーン7に遷移
+    this->runAction(Sequence::create(DelayTime::create(39),CallFunc::create([this](){
+
+        // BGMの停止
+        CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
         
-        auto visibleSize = Director::getInstance()->getVisibleSize();
-        Point origin = Director::getInstance()->getVisibleOrigin();
-        
-        Director::getInstance()->setDisplayStats(false); // stats OFF*
-        
-        // _text1タグ呼び出し
-        auto _text1 = this->getChildByTag(0);
-        _text1->setVisible(false);
-        
-        // _windowタグ呼び出し
-        auto _window = this->getChildByTag(6);
-        _window->setVisible(false);
-        
-        // 次のシーンへ遷移
-        auto _nextButton = MenuItemImage::create("res/next.png","res/next_pushed.png",CC_CALLBACK_1(StageConversation6::nextSceneCallback, this));
-        _nextButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 4 - 120));// ボタンの位置を画面中央に指定
-        auto _menu = Menu::create(_nextButton, NULL);//
-        _menu->setPosition(Vec2::ZERO);
-        this->addChild(_menu, 1, 0);
+        // 会話シーン7へ遷移
+        Director::getInstance()->replaceScene(TransitionFade::create(2.0,StageConversation7::createScene(),Color3B::BLACK));
         
     }), NULL));
     
@@ -205,11 +191,18 @@ bool StageConversation6::init() // 初期化処理
     _window->setTag(6);
     this->addChild(_window,1);
     
+    // MenuItemImageでメニューボタン追加 引数にはボタンを押した時の動作を指定
+    auto _nextButton = MenuItemImage::create("res/skip_button.png","res/skip_button_pushed.png",CC_CALLBACK_1(StageConversation6::nextSceneCallback, this));
+    _nextButton->setPosition(Vec2(visibleSize.width / 2 + 150, visibleSize.height / 4 - 120));// ボタンの位置を画面中央に指定
+    auto _menu = Menu::create(_nextButton, NULL);//
+    _menu->setPosition(Vec2::ZERO);
+    this->addChild(_menu, 1, 0);
+    
     
     // 背景
-    auto background = Sprite::create("res/central_crystal.png");
-    background->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
-    this->addChild(background,0);
+    auto _background = Sprite::create("res/central_crystal.png");
+    _background->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
+    this->addChild(_background,0);
     
     return true;
     
@@ -224,4 +217,3 @@ void StageConversation6::nextSceneCallback(Ref* pSender){
     // 会話シーン7へ遷移
     Director::getInstance()->replaceScene(TransitionFade::create(2.0,StageConversation7::createScene(),Color3B::BLACK));
 }
-

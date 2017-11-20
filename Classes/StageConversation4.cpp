@@ -213,8 +213,8 @@ bool StageConversation4::onTouchBegan(Touch* pTouch, Event* pEvent){
     
     }), NULL));
     
-    // 10秒後に異界の扉出現
-    this->runAction(Sequence::create(DelayTime::create(10),CallFunc::create([this](){
+    // 12秒後に異界の扉出現
+    this->runAction(Sequence::create(DelayTime::create(12),CallFunc::create([this](){
         
         auto visibleSize = Director::getInstance()->getVisibleSize();
         Point origin = Director::getInstance()->getVisibleOrigin();
