@@ -49,6 +49,7 @@
 		543C1D151F1CCAEA001C31BB /* StageScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 543C1D141F1CCAEA001C31BB /* StageScene.cpp */; };
 		543D4FB01FA8E19F00356477 /* StageScene3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 543D4FAC1FA8E19F00356477 /* StageScene3.cpp */; };
 		54480F791F15347E00616F7C /* StageConversation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 54480F771F15347E00616F7C /* StageConversation.cpp */; };
+		54703E691FC48BE5009D1ECE /* movie in Resources */ = {isa = PBXBuildFile; fileRef = 54703E661FC48BE4009D1ECE /* movie */; };
 		5479F4781F9F9B7F002AC57E /* StageConversation2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5479F4741F9F9B7F002AC57E /* StageConversation2.cpp */; };
 		547ED7F81FA0E2B5007973E8 /* StageConversation3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 547ED7F51FA0E2B4007973E8 /* StageConversation3.cpp */; };
 		547ED7FC1FA0E826007973E8 /* StageScene2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 547ED7FB1FA0E826007973E8 /* StageScene2.cpp */; };
@@ -170,6 +171,7 @@
 		543D4FAF1FA8E19F00356477 /* StageScene3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageScene3.h; sourceTree = "<group>"; };
 		54480F771F15347E00616F7C /* StageConversation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StageConversation.cpp; sourceTree = "<group>"; };
 		54480F781F15347E00616F7C /* StageConversation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StageConversation.hpp; sourceTree = "<group>"; };
+		54703E661FC48BE4009D1ECE /* movie */ = {isa = PBXFileReference; lastKnownFileType = folder; path = movie; sourceTree = "<group>"; };
 		5479F4741F9F9B7F002AC57E /* StageConversation2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StageConversation2.cpp; sourceTree = "<group>"; };
 		5479F4771F9F9B7F002AC57E /* StageConversation2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StageConversation2.hpp; sourceTree = "<group>"; };
 		547ED7F51FA0E2B4007973E8 /* StageConversation3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StageConversation3.cpp; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				54703E661FC48BE4009D1ECE /* movie */,
 				548D99711F1D21A80048D6BE /* splash_image.png */,
 				542A900A1EFFD996009C5062 /* Images.xcassets */,
 				549D7A131EFADC15001771EF /* music */,
@@ -529,6 +532,7 @@
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
+				54703E691FC48BE5009D1ECE /* movie in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);
