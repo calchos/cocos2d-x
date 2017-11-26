@@ -10,7 +10,7 @@ cocos2d::Scene *SplashScene::createScene(){
 
 bool SplashScene::init(){
     
-    if (! Layer::init()) {
+    if (!Layer::init()) {
         return false;
     }
     

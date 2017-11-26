@@ -307,7 +307,7 @@ bool StageScene4::onTouchBegan(Touch* pTouch, Event* pEvent){
         
         
         // クリスタル画像
-        auto _crystal = Sprite::create("res/crystal_earth.png");
+        auto _crystal = Sprite::create("res/crystal_earth_fade.png");
         _crystal->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 155));
         _crystal->setScale(1.5f);
         _crystal->setTag(7);

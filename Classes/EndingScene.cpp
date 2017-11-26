@@ -1,5 +1,5 @@
 #pragma execution_character_set("utf-8") // 文字コード指定
-#include "SplashScene.h"
+#include "OpeningTitle.h"
 #include "EndingConversation.hpp"
 #include "EndingScene.h"
 #include "ui/UIVideoPlayer.h"
@@ -54,8 +54,8 @@ bool EndingScene::init() // 初期化処理
             case VideoPlayer::EventType::STOPPED:
                 break;
             case VideoPlayer::EventType::COMPLETED:
-                Director::getInstance()->replaceScene(TransitionFade::create(1.5
-                                                                             , SplashScene::createScene()
+                Director::getInstance()->replaceScene(TransitionFade::create(3.0
+                                                                             , Opening::createScene()
                                                                              , Color3B::WHITE));
                 break;
             default:
@@ -65,7 +65,7 @@ bool EndingScene::init() // 初期化処理
 
      
     });
-    videoPlayer->setFileName("movie/test_movie.mp4");
+    videoPlayer->setFileName("movie/crystal_fade_ending.mp4");
     videoPlayer->play();
     this->addChild(videoPlayer);
     

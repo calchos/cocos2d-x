@@ -208,8 +208,8 @@ bool EndingConversation::onTouchBegan(Touch* pTouch, Event* pEvent){
     background->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
     this->addChild(background,0);
     
-    // 25秒後にエンディングシーンに自動で遷移させる
-    this->runAction(Sequence::create(DelayTime::create(25),CallFunc::create([this](){
+    // 23秒後にエンディングシーンに自動で遷移させる
+    this->runAction(Sequence::create(DelayTime::create(23),CallFunc::create([this](){
         
         // BGMの停止
         CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
