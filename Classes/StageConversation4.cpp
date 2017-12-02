@@ -254,10 +254,17 @@ bool StageConversation4::onTouchBegan(Touch* pTouch, Event* pEvent){
         CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/stage_clear.m4a");
         
         // StageClear画像
-        auto _stageClear = Sprite::create("res/stage_clear.png");
+        Sprite* _stageClear = Sprite::create("res/stage_clear.png");
         _stageClear->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 120));
         _stageClear->setScale(1.5f);
         this->addChild(_stageClear,1);
+        
+        auto scaleBig = ScaleTo::create(1.2, 1.5);
+        auto scaleSmall = ScaleTo::create(1.2, 1.0);
+        auto seq = Sequence::create(scaleBig, scaleSmall, nullptr);
+        auto rep = RepeatForever::create(seq);
+        
+        _stageClear->runAction(rep);
         
         auto nextButton = MenuItemImage::create("res/next.png","res/next_pushed.png",CC_CALLBACK_1(StageConversation4::nextSceneCallback, this));
         nextButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 4 - 120));// ボタンの位置を画面中央に指定

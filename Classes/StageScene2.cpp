@@ -365,6 +365,58 @@ void StageScene2::update(float delta){
         // プレイヤー1〜4のターンフラグが全てtrueであれば敵のターンに交代
         if(_player1Turn == true && _player2Turn == true && _player3Turn == true && _player4Turn == true){
             
+            // 2秒後に合体技発動
+            this->runAction(Sequence::create(DelayTime::create(2),CallFunc::create([this](){
+                
+                // プレイヤーのトータルクリスタル数値計算処理
+                int _totalCrystalPower = playerAttack();
+                
+                // 画面サイズ指定
+                auto visibleSize = Director::getInstance()->getVisibleSize();
+                Point origin = Director::getInstance()->getVisibleOrigin();
+                Director::getInstance()->setDisplayStats(false); // stats OFF*
+                
+                // 効果音再生
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("music/crystal_sound.m4a");
+                
+                // 総合クリスタル数値が10以上200未満の時
+                if(_totalCrystalPower >= 10 && _totalCrystalPower < 200){
+                
+                    // 合体技発動
+                    auto _text4 = Label::createWithTTF("合体技「新兵の刃」が発動！\nクリスタルがチョコっとたちに力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+                    _text4->setPosition(Point(visibleSize.width / 2 + origin.x - 50, visibleSize.height / 2 + origin.y - 180));
+                    _text4->setTag(18);//タグ付け
+                    this->addChild(_text4,2);
+                
+                }
+                
+                // 総合クリスタル値が200以上の時
+                if(_totalCrystalPower >= 200){
+                    
+                    // 合体奥義発動
+                    auto _text4 = Label::createWithTTF("合体奥義「光神・白聖斬」が発動！\nクリスタルがチョコっとたちに力を与える▼", "fonts/ヒラギノ明朝 ProN W6.ttc",14);
+                    _text4->setPosition(Point(visibleSize.width / 2 + origin.x - 50, visibleSize.height / 2 + origin.y - 180));
+                    _text4->setTag(18);//タグ付け
+                    this->addChild(_text4,2);
+                    
+                }
+                
+                // クリスタル画像
+                auto _totalCrystal = Sprite::create("res/crystal_light.png");
+                _totalCrystal->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 155));
+                _totalCrystal->setScale(1.5f);
+                _totalCrystal->setTag(19);
+                this->addChild(_totalCrystal,0);
+                
+                // 総合クリスタルパワー
+                auto _totalCrystalValue = Label::createWithTTF(StringUtils::toString(_totalCrystalPower),"fonts/ヒラギノ明朝 ProN W6.ttc",30);
+                _totalCrystalValue->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 150));
+                _totalCrystalValue->setTag(20);
+                this->addChild(_totalCrystalValue,2);
+                
+                
+            }), NULL));
+            
             // ターン交代
             _state = TYPE_ENEMY_TURN;
             
@@ -380,13 +432,28 @@ void StageScene2::update(float delta){
             // 攻撃フラグをtrueにする
              _enemy1->_doAttack = true;
             
-            // 2秒後にラムダ式を実行
-            this->runAction(Sequence::create(DelayTime::create(2),CallFunc::create([this](){
+            // 4秒後にラムダ式を実行
+            this->runAction(Sequence::create(DelayTime::create(4),CallFunc::create([this](){
                 
                 // 画面サイズ指定
                 auto visibleSize = Director::getInstance()->getVisibleSize();
                 Point origin = Director::getInstance()->getVisibleOrigin();
                 Director::getInstance()->setDisplayStats(false); // stats OFF*
+                
+                // _text4をタグ呼び出し
+                auto _text4 = this->getChildByTag(18);
+                // _text4を非表示
+                _text4->setVisible(false);
+                
+                // _totalCrystalタグ呼び出し
+                auto _totalCrystal = this->getChildByTag(19);
+                // _totalCrystal非表示
+                _totalCrystal->setVisible(false);
+                
+                // _totalCrystalValueタグ呼び出し
+                auto _totalCrystalValue = this->getChildByTag(20);
+                // _totalCrystalValue非表示
+                _totalCrystalValue->setVisible(false);
                 
                 // _enemy1を削除
                 auto _enemy1 = this->getChildByTag(4);
@@ -449,8 +516,8 @@ void StageScene2::update(float delta){
         if(!_gameEndEvent){
             _gameEndEvent = true;
             
-            // 4秒後に勝利演出を表示
-            this->runAction(Sequence::create(DelayTime::create(4),CallFunc::create([this](){
+            // 6秒後に勝利演出を表示
+            this->runAction(Sequence::create(DelayTime::create(6),CallFunc::create([this](){
                 
                 // 現在流れている音楽を停止
                 CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
@@ -527,10 +594,18 @@ void StageScene2::update(float delta){
                 this->addChild(_text6,2);
                 
                 // PlayerWin画像
-                auto player_win = Sprite::create("res/player_win.png");
+                Sprite* player_win = Sprite::create("res/player_win.png");
                 player_win->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 120));
                 player_win->setScale(1.5f);
                 this->addChild(player_win,1);
+                
+                // アニメーション処理
+                auto scaleBig = ScaleTo::create(1.2, 1.5);
+                auto scaleSmall = ScaleTo::create(1.2, 1.0);
+                auto seq = Sequence::create(scaleBig, scaleSmall, nullptr);
+                auto rep = RepeatForever::create(seq);
+                // PlayerWin画像アニメーション
+                player_win->runAction(rep);
                 
                 
                 // テキスト表示ウィンドウ
@@ -551,8 +626,8 @@ void StageScene2::update(float delta){
         if(!_gameEndEvent){
             _gameEndEvent = true;
             
-            // 4秒後に敗北演出を表示
-            this->runAction(Sequence::create(DelayTime::create(4),CallFunc::create([this](){
+            // 6秒後に敗北演出を表示
+            this->runAction(Sequence::create(DelayTime::create(6),CallFunc::create([this](){
                 
                 // 現在流れている音楽を停止
                 CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
@@ -623,11 +698,18 @@ void StageScene2::update(float delta){
                 this->addChild(_text6,2);
                 
                 // PlayerLose画像
-                auto player_win = Sprite::create("res/player_lose.png");
-                player_win->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 120));
-                player_win->setScale(1.5f);
-                this->addChild(player_win,1);
+                Sprite* _playerLose = Sprite::create("res/player_lose.png");
+                _playerLose->setPosition(Point(visibleSize.width / 2 + origin.x - 2, visibleSize.height / 2 + origin.y + 120));
+                _playerLose->setScale(1.5f);
+                this->addChild(_playerLose,1);
                 
+                // アニメーション処理
+                auto scaleBig = ScaleTo::create(1.2, 1.5);
+                auto scaleSmall = ScaleTo::create(1.2, 1.0);
+                auto seq = Sequence::create(scaleBig, scaleSmall, nullptr);
+                auto rep = RepeatForever::create(seq);
+                // PlayerLose画像アニメーション
+                _playerLose->runAction(rep);
                 
                 // テキスト表示ウィンドウ
                 auto window = Sprite::create("res/menu_window_small.png");

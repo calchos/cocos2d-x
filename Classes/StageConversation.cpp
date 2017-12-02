@@ -39,6 +39,7 @@ bool StageConversation::init() // 初期化処理
     
     // イベントリスナー(画面をタッチした時の処理)
     auto listener = EventListenerTouchOneByOne::create();
+    listener->setEnabled(true);
     listener->onTouchBegan = CC_CALLBACK_2(StageConversation::onTouchBegan, this);
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
     
@@ -126,13 +127,14 @@ bool StageConversation::init() // 初期化処理
     background->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
     this->addChild(background,0);
     
+ 
+    
     return true;
     
 }
 
 // 画面を1回タップしたときの処理
 bool StageConversation::onTouchBegan(Touch* pTouch, Event* pEvent){
-    
     
     // 画面サイズ指定
     auto visibleSize = Director::getInstance()->getVisibleSize();
@@ -176,7 +178,9 @@ bool StageConversation::onTouchBegan(Touch* pTouch, Event* pEvent){
             _text2->getLetter(i)->runAction(seq);
         }
         
+        
     }
+    
     
     // チョコさん向き反転
     _character1->setFlippedX(false);// スプライトの向き反転
